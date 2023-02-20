@@ -11,10 +11,10 @@ public class EtudiantUtilitaire {
         StringBuilder sb = new StringBuilder(chaine);
 
         // remplace le caractère à la position spécifiée
-        sb.setCharAt(0, chaine.charAt(0)).to;
+        /*sb.setCharAt(0, chaine.charAt(0)).to;
         str = sb.toString();
         chaine.toLowerCase();
-        chaine.set(0, ;
+        chaine.set(0, ;*/
 
         return chaine;
 
