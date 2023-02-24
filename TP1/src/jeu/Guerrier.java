@@ -33,7 +33,7 @@ public class Guerrier {
 
 
     public void attaquer(Guerrier guerrier) {
-        guerrier.subirDegat(10);
+        guerrier.subirDegat(this.force*GuerrierUtilitaire.De3(1));
     }
 
     public void subirDegat(int degat) {
