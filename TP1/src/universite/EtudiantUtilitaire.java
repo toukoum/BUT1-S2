@@ -32,13 +32,30 @@ public class EtudiantUtilitaire {
         System.out.println("Nom complet : " + etudiant.getNomComplet());
         System.out.println("Mail : " + etudiant.getMail());
         System.out.println("Adresse : " + etudiant.getAdresse());
-        System.out.println("Moyenne : " + etudiant.getMoyenne());
-        System.out.print(etudiant.getNbreNotes() + " Notes : ");
 
-        for (int i = 0; i < etudiant.getNbreNotes(); i++) {
-            System.out.print(etudiant.getNotes()[i] + " ");
+
+        if (etudiant.getGroupe() != null) {
+            System.out.println("Groupe : " + etudiant.getGroupe().getLibelle());
+
         }
-        System.out.println("\n");
+        else {
+            System.out.println("Groupe : Aucun !");
+        }
+
+
+        if (etudiant.getNbreNotes() != 0) {
+            System.out.print(etudiant.getNbreNotes() + " Notes : ");
+            for (int i = 0; i < etudiant.getNbreNotes(); i++) {
+                System.out.print(etudiant.getNotes()[i] + " ");
+            }
+            System.out.println("\n");
+            System.out.println("Moyenne : " + etudiant.getMoyenne());
+
+        }
+        else {
+            System.out.println("Moyenne : Aucune notes donc aucune moyenne !");
+            System.out.println("Notes : Aucune notes !");
+        }
 
     }
 }

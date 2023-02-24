@@ -14,6 +14,8 @@ public class Etudiant {
     private String adresse = null;
     private String login;
 
+    Groupe groupe = null;
+
     private double[] notes = new double[5];
 
     private int nbreNotes = 0;
@@ -60,6 +62,18 @@ public class Etudiant {
      */
     public boolean existAdresse() {
         return (adresse != null && !(adresse.isEmpty()));
+    }
+
+    public boolean existGroupe() {
+        return (groupe != null);
+    }
+
+    public Groupe getGroupe() {
+        return groupe;
+    }
+
+    public void setGroupe(Groupe groupe) {
+        this.groupe = groupe;
     }
 
     public void addNote(double note) {

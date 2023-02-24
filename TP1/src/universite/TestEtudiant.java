@@ -12,6 +12,9 @@ public class TestEtudiant {
         etudiant1.addNote(1);
         etudiant1.addNote(19);
 
+        Groupe groupeA = new Groupe("A");
+        etudiant1.setGroupe(groupeA);
+
         EtudiantUtilitaire.affiche(etudiant1);
         EtudiantUtilitaire.affiche(etudiant2);
 
