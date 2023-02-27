@@ -1,4 +1,4 @@
-package universite;
+package TP1.universite;
 
 public class TestEtudiant {
 

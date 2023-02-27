@@ -1,0 +1,53 @@
+package TP2.universite;
+
+public class Personnel extends Personne {
+    private int echelon;
+    private double pointDIndice;
+    public static final int ECHELON_MIN = 1;
+    public static final int POINTDINDICEMIN = 1000;
+
+    public Personnel(String login, String nom, String prenom) {
+        super(login, nom, prenom);
+        setEchelon(ECHELON_MIN);
+        setPointDIndice(POINTDINDICEMIN);
+    }
+
+    public Personnel(String login, String nom, String prenom, int echelon, double pointDIndice) {
+        super(login, nom, prenom);
+        this.echelon = echelon;
+        this.pointDIndice = pointDIndice;
+        setEchelon(echelon);
+        setPointDIndice(pointDIndice);
+
+    }
+
+    public int getEchelon() {
+        return echelon;
+    }
+
+    public double getPointDIndice() {
+        return pointDIndice;
+    }
+
+    public double getSalaire() {
+        return getEchelon() * getPointDIndice();
+    }
+
+    public void setEchelon(int echelon) {
+        if (echelon > 4) {
+            echelon = 4;
+        } else if (echelon < 1) {
+            echelon = 1;
+        }
+        this.echelon = echelon;
+    }
+
+    public void setPointDIndice(double pointDIndice) {
+        if (pointDIndice > 1200) {
+            pointDIndice = 1200;
+        } else if (pointDIndice < 1000) {
+            pointDIndice = 1000;
+        }
+        this.pointDIndice = pointDIndice;
+    }
+}

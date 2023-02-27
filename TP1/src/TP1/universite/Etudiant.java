@@ -1,4 +1,4 @@
-package universite;
+package TP1.universite;
 
 /**
  * La classe Etudiant représente la notion d'étudiant (login, nom, prénom
