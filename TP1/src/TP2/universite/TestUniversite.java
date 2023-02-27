@@ -59,6 +59,7 @@ public class TestUniversite {
         }
 
         System.out.println("------------------------------------------\n PERSONNEL\n------------------------------------------");
+
         // Affichage du personnel
         for (Personnel personnel : personnels) {
             UniversiteUtilitaire.affichePersonnel(personnel);
