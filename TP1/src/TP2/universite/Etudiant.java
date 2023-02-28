@@ -82,7 +82,7 @@ public class Etudiant extends Personne {
      * Cette méthode permet de mettre à jour les deux informations.
      */
     public void setAdresse(String adresse, String adresseParents) {
-        setAdresse(adresse);
+        super.setAdresse(adresse);
         this.adresseParents = adresseParents;
     }
 }

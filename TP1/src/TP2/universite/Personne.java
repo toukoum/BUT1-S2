@@ -6,7 +6,7 @@ package TP2.universite;
  * Créer une personne de type générale, classe mère
  */
 
-public class Personne {
+public abstract class Personne {
     private String nom;
     private String prenom;
     private String adresse = null;
@@ -57,10 +57,7 @@ public class Personne {
         return this.prenom + ' ' + this.nom;
     }
 
-    public String getMail() {
-        return prenom + "." + nom + ("@univ-grenoble-alpes.fr");
-    }
-
+    public abstract String getMail();
 
 
 //    METHODE ------------------------------------------
@@ -72,7 +69,6 @@ public class Personne {
     public boolean existAdresse() {
         return (adresse != null && !(adresse.isEmpty()));
     }
-
 
 
 

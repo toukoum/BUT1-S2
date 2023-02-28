@@ -1,8 +1,10 @@
 package TP2.universite;
 
+import TP2.contrainte.ReelContraint;
+
 public class Personnel extends Personne {
     private int echelon;
-    private double pointDIndice;
+    private ReelContraint pointDIndice;
     public static final int ECHELON_MIN = 1;
     public static final int POINTDINDICEMIN = 1000;
 
@@ -49,5 +51,16 @@ public class Personnel extends Personne {
             pointDIndice = 1000;
         }
         this.pointDIndice = pointDIndice;
+    }
+
+    /**
+     * Méthode de redéfinition de la méthode getMail de la classe Personne
+     *
+     * @return Une chaîne de caractères correspondant à
+     * "prenom.nom@etu.univ-grenoble-alpes.fr" (rajoute le "etu." si c'est un étudiant)
+     */
+    @Override
+    public String getMail() {
+        return getPrenom() + "." + getNom() + "@univ-grenoble-alpes.fr";
     }
 }
