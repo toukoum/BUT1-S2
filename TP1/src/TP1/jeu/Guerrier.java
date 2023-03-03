@@ -1,9 +1,9 @@
 package TP1.jeu;
 
-public class Guerrier {
+public abstract class Guerrier {
 
-    private int force = 10;
-    private int pointsDeVie = 100;
+    private int force;
+    private int pointsDeVie;
 
     public Guerrier() {
     }
@@ -36,7 +36,7 @@ public class Guerrier {
         guerrier.subirDegat(this.force*GuerrierUtilitaire.De3(1));
     }
 
-    public void subirDegat(int degat) {
+    protected void subirDegat(int degat) {
         this.pointsDeVie -= degat;
     }
 

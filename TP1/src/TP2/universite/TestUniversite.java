@@ -19,6 +19,16 @@ public class TestUniversite {
         etudiant1.setAdresse("13 rue à côté", "23 rue beaucoup plus loin");
         etudiant2.setAdresse("30 avenue Berlioz");
 
+        etudiant1.addNote();
+        etudiant1.addNote();
+        System.out.println(etudiant1.calculMoyenne());
+
+        ArrayList<Etudiant> etudiants = new ArrayList<>();
+        etudiants.add(etudiant1);
+        etudiants.add(etudiant2);
+        etudiants.add(etudiant3);
+
+
         // Ajouter les trois étudiants à la liste
         personnes.add(etudiant1);
         personnes.add(etudiant2);
@@ -26,10 +36,10 @@ public class TestUniversite {
 
         // Création de deux personnels
         Personnel personnel1 = new Personnel("goulianj", "Goulian", "Jérôme");
-        Personnel personnel2 = new Personnel("brunetf", "BrunetManquat", "Francis", 0, 1400);
+        Personnel personnel2 = new Personnel("brunetf", "BrunetManquat", "Francis", 0);
         Personnel personnel3 = new Personnel("lejeuna", "LejeunE", "Anne");
         personnel3.setEchelon(5);
-        personnel3.setPointDIndice(900);
+//        personnel3.setPointDIndice(900);
 
         // Ajouter les personnels à la liste personnes
         personnes.add(personnel1);
@@ -46,8 +56,8 @@ public class TestUniversite {
 
         // Affichage des personnes
         // Utilisation d'une simplifacation d'écriture avec le for
-        for (Personne personne : personnes) {
-            UniversiteUtilitaire.affichePersonne(personne);
+        for (Etudiant etudiant : etudiants) {
+            UniversiteUtilitaire.afficheEtudiant(etudiant);
         }
 
         System.out.println("------------------------------------------\n PERSONNEL\n------------------------------------------");

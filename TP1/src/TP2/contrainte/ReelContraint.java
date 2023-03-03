@@ -26,6 +26,12 @@ public class ReelContraint {
         return max;
     }
 
+    public double getValeur() {
+        return valeur;
+    }
+
+
+
     public void setMin(double min) {
         this.min = min;
     }

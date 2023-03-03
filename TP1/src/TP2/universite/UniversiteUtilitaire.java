@@ -5,24 +5,38 @@ public class UniversiteUtilitaire {
 
 
     /**
-     * Affiche les données d'une personne
+     * Affiche les données d'une etudiant
      *
      * @void que ce soit un étudiant ou non, les donées sont correctement affiché
      */
-    public static void affichePersonne(Personne personne) {
-        //affichage des données d'une personne
+    public static void afficheEtudiant(Etudiant etudiant) {
+        //affichage des données d'une etudiant
 
         System.out.println("_____________________");
-        System.out.println("Login : " + personne.getLogin());
-        System.out.println("Nom complet : " + personne.getNomComplet());
-        System.out.println("Mail : " + personne.getMail());
-        if (personne.getAdresse() == null) {
+        System.out.println("Login : " + etudiant.getLogin());
+        System.out.println("Nom complet : " + etudiant.getNomComplet());
+        System.out.println("Mail : " + etudiant.getMail());
+        if (etudiant.getAdresse() == null) {
             System.out.println("Adresse : aucune");
         }
         else {
-            System.out.println("Adresse : " + personne.getAdresse());
+            System.out.println("Adresse : " + etudiant.getAdresse());
         }
         System.out.println();
+
+        if (etudiant.getListeNotes().size() != 0) {
+
+            for (int i = 0; i < etudiant.getListeNotes().size(); i++) {
+                System.out.print(etudiant.getListeNotes().get(i).getValeur() + " ");
+            }
+            System.out.println("\n");
+            System.out.println("Moyenne : " + etudiant.calculMoyenne());
+
+        }
+        else {
+            System.out.println("Moyenne : Aucune notes donc aucune moyenne !");
+            System.out.println("Notes : Aucune notes !");
+        }
     }
 
 
@@ -45,7 +59,7 @@ public class UniversiteUtilitaire {
             System.out.println("Adresse : " + personnel.getAdresse());
         }
         System.out.println("Echelon : " + personnel.getEchelon());
-        System.out.println("Point d'indice : " + personnel.getPointDIndice());
+        System.out.println("Point d'indice : " + personnel.getPointdindice());
         System.out.println("Salaire : " + personnel.getSalaire());
     }
 

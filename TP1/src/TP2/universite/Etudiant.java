@@ -1,14 +1,18 @@
 package TP2.universite;
+import TP2.contrainte.ContrainteUtilitaire;
+import TP2.contrainte.Note;
 
+import java.util.ArrayList;
 
 /**
  * @Class Etudiant
- *
+ * <p>
  * Créer une personne de type étudiant, classe fille de la classe Personne
  * Redéfinition de méthode et surcharge.
  */
 public class Etudiant extends Personne {
     private String adresseParents;
+    private ArrayList<Note> listeNotes = new ArrayList<>();
 
     public Etudiant(String login, String nom, String prenom, String adresse, String adresseParents) {
         super(login, nom, prenom, adresse);
@@ -19,6 +23,10 @@ public class Etudiant extends Personne {
         super(login, nom, prenom);
     }
 
+
+    public ArrayList<Note> getListeNotes() {
+        return listeNotes;
+    }
 
 
 //    REDEFINITION ------------------------------------------
@@ -59,11 +67,10 @@ public class Etudiant extends Personne {
     }
 
 
-
     /**
      * Méthode de redéfinition de la méthode existeAdresse de la classe Personne
      *
-     * @return  Retourne vrai si l’étudiant à au moins une adresse. (soit un personnel, soit une de ces parents, soit
+     * @return Retourne vrai si l’étudiant à au moins une adresse. (soit un personnel, soit une de ces parents, soit
      * les deux.
      */
     @Override
@@ -84,5 +91,22 @@ public class Etudiant extends Personne {
     public void setAdresse(String adresse, String adresseParents) {
         super.setAdresse(adresse);
         this.adresseParents = adresseParents;
+    }
+
+
+    public void addNote() {
+        Note note = ContrainteUtilitaire.saisirNote(0, 20);
+        listeNotes.add(note);
+    }
+
+
+    public double calculMoyenne() {
+        int somme = 0;
+
+        for (int i = 0; i < listeNotes.size(); i++) {
+            somme += listeNotes.get(i).getValeur();
+        }
+
+        return somme/listeNotes.size();
     }
 }
