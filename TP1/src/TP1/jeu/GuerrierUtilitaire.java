@@ -13,9 +13,9 @@ public class GuerrierUtilitaire {
         return 1 + (int)(Math.random() * ((3 - 1) + 1));
     }
 
-    public static int De3(int nombreDes) {
+    public static int De3(int force) {
         int somme = 0;
-        for (int i = 0; i < nombreDes; i++) {
+        for (int i = 0; i < force; i++) {
             somme = somme + De3();
         }
         return somme;

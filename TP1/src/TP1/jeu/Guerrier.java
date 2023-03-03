@@ -6,11 +6,15 @@ public abstract class Guerrier {
     private int pointsDeVie;
 
     public Guerrier() {
+        setForce(10);
+        setPointsDeVie(100);
     }
 
     public int getForce() {
         return force;
     }
+
+
 
     public int getPointsDeVie() {
         return pointsDeVie;
@@ -18,6 +22,10 @@ public abstract class Guerrier {
 
     public void setPointsDeVie(int pointsDeVie) {
         this.pointsDeVie = pointsDeVie;
+    }
+
+    public void setForce(int force) {
+        this.force = force;
     }
 
     public boolean estVivant() {
@@ -32,8 +40,8 @@ public abstract class Guerrier {
     }
 
 
-    public void attaquer(Guerrier guerrier) {
-        guerrier.subirDegat(this.force*GuerrierUtilitaire.De3(1));
+    public void attaquer(Guerrier guerrier, int degat) {
+        guerrier.subirDegat(degat);
     }
 
     protected void subirDegat(int degat) {

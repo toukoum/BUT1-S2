@@ -1,9 +1,11 @@
 package TP1.jeu;
 
 public class Nain extends Guerrier{
-    public Nain() {
-        super();
+    public Nain() { }
+
+
+    @Override
+    protected void subirDegat(int degat) {
+        super.subirDegat(degat/2);
     }
-
-
 }
