@@ -1,8 +1,10 @@
 package TP2.universite;
+
 import TP2.contrainte.ContrainteUtilitaire;
 import TP2.contrainte.Note;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 /**
  * @Class Etudiant
@@ -10,9 +12,12 @@ import java.util.ArrayList;
  * Créer une personne de type étudiant, classe fille de la classe Personne
  * Redéfinition de méthode et surcharge.
  */
-public class Etudiant extends Personne {
+public class Etudiant extends Personne implements Comparable<Etudiant> {
     private String adresseParents;
     private ArrayList<Note> listeNotes = new ArrayList<>();
+
+    private Groupe groupe;
+
 
     public Etudiant(String login, String nom, String prenom, String adresse, String adresseParents) {
         super(login, nom, prenom, adresse);
@@ -107,6 +112,44 @@ public class Etudiant extends Personne {
             somme += listeNotes.get(i).getValeur();
         }
 
-        return somme/listeNotes.size();
+        return somme / listeNotes.size();
     }
+
+
+    public void setGroupe(Groupe groupe) {
+        if (!existGroupe()) {
+            this.groupe = groupe;
+        }
+        if (isContainedGroupe(groupe)) {
+            this.groupe.removeEtudiant(this);
+            this.groupe = groupe;
+            groupe.addEtudiant(this);
+        }
+    }
+
+    public Groupe getGroupe() {
+        return groupe;
+    }
+
+    public boolean existGroupe() {
+        return (this.groupe != null);
+    }
+
+   public boolean isContainedGroupe(Groupe groupe) {
+       return  (getGroupe().getLibelle().compareTo(groupe.getLibelle()) != 0);
+
+    }
+
+    @Override
+    public int compareTo(Etudiant o) {
+        if (this.getNom().compareTo(o.getNom()) < 0 || (this.getNom().compareTo(o.getNom()) == 0 && this.getPrenom().compareTo(o.getPrenom()) < 0)) {
+            return -1;
+        } else if (this.getNom().compareTo(o.getPrenom()) == 0 && this.getPrenom().compareTo(o.getPrenom()) == 0) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
+
+
 }
