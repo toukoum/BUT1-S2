@@ -127,14 +127,20 @@ public class Etudiant extends Personne implements Comparable<Etudiant> {
         }
     }
 
+
+
     public Groupe getGroupe() {
         return groupe;
     }
 
+
+    // vérifie que l'étudiant à bien un groupe
     public boolean existGroupe() {
         return (this.groupe != null);
     }
 
+
+    // méthode qui dans le cas où le groupe de l'étudiant n'est pas le même que celui passé en paramètre, retourne true
    public boolean isContainedGroupe(Groupe groupe) {
        return  (getGroupe().getLibelle().compareTo(groupe.getLibelle()) != 0);
 
@@ -144,7 +150,7 @@ public class Etudiant extends Personne implements Comparable<Etudiant> {
     public int compareTo(Etudiant o) {
         if (this.getNom().compareTo(o.getNom()) < 0 || (this.getNom().compareTo(o.getNom()) == 0 && this.getPrenom().compareTo(o.getPrenom()) < 0)) {
             return -1;
-        } else if (this.getNom().compareTo(o.getPrenom()) == 0 && this.getPrenom().compareTo(o.getPrenom()) == 0) {
+        } else if (this.getNom().compareTo(o.getNom()) == 0 && this.getPrenom().compareTo(o.getPrenom()) == 0) {
             return 0;
         } else {
             return 1;

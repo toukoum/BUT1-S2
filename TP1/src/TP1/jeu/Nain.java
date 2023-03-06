@@ -8,4 +8,5 @@ public class Nain extends Guerrier{
     protected void subirDegat(int degat) {
         super.subirDegat(degat/2);
     }
+
 }

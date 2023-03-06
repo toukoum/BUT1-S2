@@ -1,10 +1,18 @@
 package TP1.jeu;
 
 public class Elfe extends Guerrier {
+    private final int ressourceEntrainement = 2;
+
     public Elfe() { }
 
+
     @Override
-    public void setForce(int force) {
-        super.setForce(2 * force);
+    public int getForce() {
+        return super.getForce()*2;
+    }
+
+    @Override
+    public int ressourceEntrainement() {
+        return ressourceEntrainement;
     }
 }

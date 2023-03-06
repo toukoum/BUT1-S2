@@ -12,11 +12,11 @@ public class TestEtudiantGroupe {
 
 
         // Créer des étudiants
-        Etudiant etudiant1 = new Etudiant("SANZF", "FLORIANT", "Sanz");
-        Etudiant etudiant2 = new Etudiant("portepa", "Pierre-Antoine", "Porte");
-        Etudiant etudiant3 = new Etudiant("burlatn", "nils", "burlat");
-        Etudiant etudiant4 = new Etudiant("brunetr", "Raphaël", "Brunet-Manquat");
-        Etudiant etudiant5 = new Etudiant("brunetm", "Maxime", "Brunet-Manquat");
+        Etudiant etudiant1 = new Etudiant("SANZF", "Sanz", "FLORIANT");
+        Etudiant etudiant2 = new Etudiant("portepa", "Porte", "Pierre-Antoine");
+        Etudiant etudiant3 = new Etudiant("burlatn", "burlat", "nils");
+        Etudiant etudiant4 = new Etudiant("test", "Brunet-manquat", "Maxime");
+        Etudiant etudiant5 = new Etudiant("testt", "brunet-Manquat", "Raphael");
 
 
         // Ajouter TOUS les étudiants au groupe A
@@ -45,7 +45,6 @@ public class TestEtudiantGroupe {
                     etudiant.getNom() + " " + etudiant.getPrenom());
         }
 
-
         // Afficher les étudiants du groupe B
         System.out.println("---------");
         System.out.println("Etudiants du Groupe B");
@@ -54,5 +53,4 @@ public class TestEtudiantGroupe {
                     etudiant.getNom() + " " + etudiant.getPrenom());
         }
     }
-
 }

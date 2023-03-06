@@ -1,13 +1,11 @@
 package TP2.universite;
 
-import java.util.Comparator;
-import java.util.Iterator;
 import java.util.TreeSet;
 
 public class Groupe {
 
 
-    private TreeSet<Etudiant> Etudiants = new TreeSet<>();
+    private TreeSet<Etudiant> etudiants = new TreeSet<>();
     private String libelle;
 
 
@@ -24,34 +22,20 @@ public class Groupe {
     }
 
     public void addEtudiant(Etudiant etudiant) {
-        if (!containsEtudiant(etudiant)) {
-            Etudiants.add(etudiant);
-            etudiant.setGroupe(this);
-        }
+        etudiants.add(etudiant);
+        etudiant.setGroupe(this);
     }
 
     public void removeEtudiant(Etudiant etudiant) {
-        Iterator<Etudiant> iterator = Etudiants.iterator();
-        while (iterator.hasNext()) {
-            Etudiant e = iterator.next();
-            if (e.equals(etudiant)) {
-                iterator.remove();
-                break;
-            }
-        }
+        etudiants.remove(etudiant);
     }
 
 
     public boolean containsEtudiant(Etudiant etudiant) {
-        for (Etudiant e : Etudiants) {
-            if (e.equals(etudiant)) {
-                return true;
-            }
-        }
-        return false;
+        return etudiants.contains(etudiant);
     }
 
     public TreeSet<Etudiant> getEtudiants() {
-        return Etudiants;
+        return etudiants;
     }
 }
