@@ -14,6 +14,7 @@ public class GuerrierUtilitaire {
     }
 
     public static int De3(int force) {
+        // retourne la somme d'un lancé de force dés
         int somme = 0;
         for (int i = 0; i < force; i++) {
             somme = somme + De3();

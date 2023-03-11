@@ -30,9 +30,10 @@ public class Chateau {
     }
 
 
-   public void entrainer() {
-        // Méthode qui a partir de la collection Queue listeGuerrier entraîne en utilisant au maximum les ressources les guerriers dans l'ordre
-        // et les ajoutes à une autre collections listeGuerrier entrainé
+   public Queue<Guerrier> entrainer() {
+        // Méthode qui a partir de la collection Queue listeGuerrierNovice entraîne, en utilisant au maximum les ressources, les guerriers dans l'ordre
+        // et les ajoutes à une autre collections listeGuerrierentrain
+       // retourne listeGuerrierentrainer
 
 
         while (this.ressources > 4) {
@@ -86,7 +87,7 @@ public class Chateau {
            }
         }
 
-
+        return listeGuerrierEntrainer;
     }
 
     private void incrementeRessources() {
