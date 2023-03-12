@@ -1,17 +1,20 @@
 package TP1.jeu;
 
 public enum Couleur {
-    Bleu, Rouge;
+    Bleu,
+    Rouge;
 
-    @Override
+    private Couleur() {
+    }
+
     public String toString() {
-        //34 bleu 31 rouge
         String couleur = "";
         if (this == Bleu) {
             couleur = "34";
         } else {
             couleur = "31";
         }
-        return "\033[" + couleur + "m" + super.toString();
+
+        return "\u001b[" + couleur + "m" + super.toString() + "\u001b[0m";
     }
 }

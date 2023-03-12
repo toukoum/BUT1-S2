@@ -3,7 +3,10 @@ package TP1.jeu;
 public class ChefNain extends Nain{
 
     private final int ressourceEntrainement = 3;
-    public ChefNain() { }
+    public ChefNain(Couleur couleur) {
+        super(couleur);
+        setCouleur(couleur);
+    }
 
     @Override
     protected void subirDegat(int degat) {
@@ -12,7 +15,7 @@ public class ChefNain extends Nain{
 
 
     @Override
-    public int ressourceEntrainement() {
+    public int getRessourceEntrainement() {
         return ressourceEntrainement;
     }
 }

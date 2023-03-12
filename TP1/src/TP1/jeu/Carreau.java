@@ -37,12 +37,11 @@ public class Carreau {
         guerriersRouges.add(guerrier);
     }
 
-    public Guerrier retirerGuerrierBleu() {
-        return guerriersBleus.remove();
+    public void retirerGuerrierBleu() {
+        guerriersBleus.clear();
     }
 
-    public Guerrier retirerGuerrierRouge() {
-        return guerriersRouges.remove();
+    public void retirerGuerrierRouge(){guerriersRouges.clear();
     }
 
     public void supprimerGuerrier(Guerrier guerrier) {
@@ -71,15 +70,21 @@ public class Carreau {
             degat = GuerrierUtilitaire.De3(getGuerriersBleus().peek().getForce());
 
             // guerrier bleu attaque guerrier rouge
-            guerriersBleus.peek().attaquer(guerriersRouges.peek(), degat);
+            if (!guerriersRouges.isEmpty()) {
+                // Dans le cas ou il n'y a plus de guerrier à tuer chez les rouge
+                guerriersBleus.peek().attaquer(guerriersRouges.peek(), degat);
+
+                // vérif de savoir si le guerrier rouge attaqué est mort
+                if (!guerriersRouges.peek().estVivant()) {
+                    // si il est mort, on le supprime de la Queue
+                    guerriersRouges.poll();
+                }
+            }
 
             // ajoute le guerrier qui vient d'attaquer à la fin de la Queue en le supprimant de la première place de la Queue
             guerriersBleus.offer(guerriersBleus.poll());
 
-            // vérif de savoir si le guerrier rouge attaqué est mort
-            if (!guerriersRouges.peek().estVivant()) {
-                guerriersRouges.poll();
-            }
+
         }
 
         for (int i = 0; i < guerriersRouges.size(); i++) {
@@ -88,15 +93,22 @@ public class Carreau {
             degat = GuerrierUtilitaire.De3(getGuerriersRouges().peek().getForce());
 
             // guerrier bleu attaque guerrier rouge
-            guerriersRouges.peek().attaquer(guerriersBleus.peek(), degat);
+            if (!guerriersBleus.isEmpty()) {
+                // Dans le cas ou il n'y a plus de guerrier à tuer chez les bleus
+                guerriersRouges.peek().attaquer(guerriersBleus.peek(), degat);
+
+                // vérif de savoir si le guerrier rouge attaqué est mort
+                if (!guerriersBleus.peek().estVivant()) {
+                    // si il est mort, on le supprime de la Queue
+                    guerriersBleus.poll();
+                }
+            }
 
             // ajoute le guerrier qui vient d'attaquer à la fin de la Queue en le supprimant de la première place de la Queue
             guerriersRouges.offer(guerriersRouges.poll());
 
-            // vérif de savoir si le guerrier rouge attaqué est mort
-            if (!guerriersBleus.peek().estVivant()) {
-                guerriersBleus.poll();
-            }
+
+
         }
     }
 }

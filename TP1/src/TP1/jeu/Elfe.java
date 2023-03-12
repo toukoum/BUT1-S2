@@ -1,9 +1,12 @@
 package TP1.jeu;
 
 public class Elfe extends Guerrier {
-    private final int ressourceEntrainement = 2;
+    private int ressourceEntrainement = 2;
 
-    public Elfe() { }
+    public Elfe(Couleur couleur) {
+        super(couleur);
+        setCouleur(couleur);
+    }
 
 
     @Override
@@ -12,7 +15,10 @@ public class Elfe extends Guerrier {
     }
 
     @Override
-    public int ressourceEntrainement() {
+    public int getRessourceEntrainement() {
         return ressourceEntrainement;
     }
+
+
+
 }

@@ -17,6 +17,7 @@ public class Chateau {
 
 
     public Chateau(Couleur couleur) {
+        ressources = RESSOURCE_INITIAL;
         this.couleur = couleur;
     }
 
@@ -30,68 +31,39 @@ public class Chateau {
     }
 
 
-   public Queue<Guerrier> entrainer() {
-        // Méthode qui a partir de la collection Queue listeGuerrierNovice entraîne, en utilisant au maximum les ressources, les guerriers dans l'ordre
-        // et les ajoutes à une autre collections listeGuerrierentrain
-       // retourne listeGuerrierentrainer
 
 
-        while (this.ressources > 4) {
-            if (listeGuerrierNovice.element().ressourceEntrainement() == 4) {
-                ressources-=4;
+    public Queue<Guerrier> entrainer() {
+        // Méthode qui entraîne les guerriers novices en utilisant les ressources disponibles, et ajoute les guerriers entraînés à la listeGuerrierEntrainer.
+        // Elle retourne la listeGuerrierEntrainer contenant les guerriers entraînés.
+
+
+        // Parcours de tous les guerriers novices dans la file d'attente
+        while (!listeGuerrierNovice.isEmpty()) {
+            Guerrier guerrier = listeGuerrierNovice.peek();
+
+            // Vérification si les ressources disponibles sont suffisantes pour entraîner le guerrier novice
+            if (ressources >= guerrier.getRessourceEntrainement()) {
+                // On retire le guerrier de la file d'attente des guerriers novices et on l'ajoute à la liste des guerriers entraînés.
                 listeGuerrierEntrainer.add(listeGuerrierNovice.poll());
-            }
-            if (listeGuerrierNovice.element().ressourceEntrainement() == 3) {
-                ressources-=3;
-                listeGuerrierEntrainer.add(listeGuerrierNovice.poll());
-            }
-            if (listeGuerrierNovice.element().ressourceEntrainement() == 2) {
-                ressources-=2;
-                listeGuerrierEntrainer.add(listeGuerrierNovice.poll());
-            }
-            if (listeGuerrierNovice.element().ressourceEntrainement() == 1) {
-                ressources-=1;
-                listeGuerrierEntrainer.add(listeGuerrierNovice.poll());
+
+                // Mise à jour des ressources disponibles
+                ressources -= guerrier.getRessourceEntrainement();
+            } else {
+                // Si les ressources ne sont pas suffisantes pour entraîner le guerrier novice, on sort de la boucle
+                break;
             }
         }
-        while (this.ressources > 3) {
-           if (listeGuerrierNovice.element().ressourceEntrainement() == 3) {
-               ressources-=3;
-               listeGuerrierEntrainer.add(listeGuerrierNovice.poll());
-           }
-           if (listeGuerrierNovice.element().ressourceEntrainement() == 2) {
-               ressources-=2;
-               listeGuerrierEntrainer.add(listeGuerrierNovice.poll());
-           }
-           if (listeGuerrierNovice.element().ressourceEntrainement() == 1) {
-               ressources-=1;
-               listeGuerrierEntrainer.add(listeGuerrierNovice.poll());
-           }
-        }
-
-        while (this.ressources > 2) {
-           if (listeGuerrierNovice.element().ressourceEntrainement() == 2) {
-               ressources-=2;
-               listeGuerrierEntrainer.add(listeGuerrierNovice.poll());
-           }
-           if (listeGuerrierNovice.element().ressourceEntrainement() == 1) {
-               ressources-=1;
-               listeGuerrierEntrainer.add(listeGuerrierNovice.poll());
-           }
-        }
-
-        while (this.ressources > 1) {
-           if (listeGuerrierNovice.element().ressourceEntrainement() == 1) {
-               ressources-=1;
-               listeGuerrierEntrainer.add(listeGuerrierNovice.poll());
-           }
-        }
-
+        incrementeRessources();
+        // Retourne la liste des guerriers entraînés
         return listeGuerrierEntrainer;
     }
 
+
+
+
     private void incrementeRessources() {
-        this.ressources ++;
+        this.ressources += RESSOURCE_AJOUTER_PAR_TOUR;
     }
 
 
@@ -107,4 +79,7 @@ public class Chateau {
         return this.couleur == Couleur.Rouge;
     }
 
+    public int getRessource() {
+        return ressources;
+    }
 }

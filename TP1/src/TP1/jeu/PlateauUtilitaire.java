@@ -1,17 +1,18 @@
 package TP1.jeu;
 
-import data.Carreau;
+/*import data.Carreau;
 import data.Chateau;
 import data.Guerrier;
 import data.Plateau;
 import utils.GuerrierUtilitaire;
 import utils.ChateauUtilitaire;
-import java.util.List;
+import java.util.List;*/
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
  *
- * @author fbm rev hb
+ * @author raphael giraud
  */
 public class PlateauUtilitaire {
 
@@ -39,13 +40,39 @@ public class PlateauUtilitaire {
         return somme;
     }
 
-        ///////////////////////
+
+    ///////////////////////
     // AFFICHAGE
-    
+
     /**
      * Affichage des Guerriers sur chaque Carreaux du plateau
      * @param plateau
      */
+    public static void affichePlateau(ArrayList<Carreau> plateau) {
+        System.out.println();
+        System.out.println();
+        System.out.println("----- Plateau -----");
+
+        for (int i = 0; i <= plateau.size()-1; i++) {
+            int carreaunum = i+1;
+            System.out.println("_______CASE_"+carreaunum+"_______");
+            if (plateau.get(i).estBleu()) {
+                System.out.println("-Guerrier Bleu-");
+                for (Guerrier guerrier : plateau.get(i).guerriersBleus) {
+                    GuerrierUtilitaire.afficherGuerrier(guerrier);
+                }
+            }
+            if (plateau.get(i).estRouge()) {
+                System.out.println("-Guerrier Rouge-");
+                for (Guerrier guerrier : plateau.get(i).guerriersRouges) {
+                    GuerrierUtilitaire.afficherGuerrier(guerrier);
+                }
+            }
+        }
+
+    }
+
+
     
     /**
      * Affichage de l'équipe gagnante

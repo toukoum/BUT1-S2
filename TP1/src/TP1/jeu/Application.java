@@ -1,24 +1,38 @@
-//package ...
+package TP1.jeu;
 
+import java.util.Scanner;
 
 public class Application {
 
     public static void main(String[] args) {
-        
-        /////
-        // 1) --Creation du plateau
 
-        /////
-        // 2) --Creation des chateaux
+        Scanner scanner = new Scanner(System.in);
 
-        ////
-        // 3) --Initialisation des équipes
-        ////
+        // Création du plateau
+        Plateau plateau = new Plateau(5);
 
-        // Donner les ordres de creation de Guerriers pour le chateau bleu
-        
-        // Donner les ordres de creation de Guerriers pour le chateau rouge
-        
+        // Création des chateau bleu et rouge
+        Chateau chateauBleu = new Chateau(Couleur.Bleu);
+        Chateau chateauRouge = new Chateau(Couleur.Rouge);
+
+        //Initialisation des équipes
+        //Rouge
+        chateauBleu.ajoutGuerrierNovice(GuerrierUtilitaire.createNainBleu());
+        chateauBleu.ajoutGuerrierNovice(GuerrierUtilitaire.createElfeBleu());
+        chateauBleu.ajoutGuerrierNovice(GuerrierUtilitaire.createChefElfeBleu());
+
+        //Bleu
+        chateauRouge.ajoutGuerrierNovice(GuerrierUtilitaire.createNainRouge());
+        chateauRouge.ajoutGuerrierNovice(GuerrierUtilitaire.createElfeRouge());
+        chateauRouge.ajoutGuerrierNovice(GuerrierUtilitaire.createChefNainRouge());
+
+        //Affichage des deux équipes
+        ChateauUtilitaire.afficheGuerrierNovice(chateauBleu);
+        ChateauUtilitaire.afficheGuerrierNovice(chateauRouge);
+
+
+        System.out.println("\n--- Appuyer sur entrée pour commencer le jeu ---");
+        scanner.nextLine();
         
 
         ////

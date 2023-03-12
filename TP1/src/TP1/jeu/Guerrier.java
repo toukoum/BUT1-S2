@@ -8,17 +8,19 @@ public abstract class Guerrier {
     private final int RESSOURCE_BASE = 1;
     private final int PV_MAX_BASE = 100;
 
+    private Couleur couleur;
+
     private Chateau chateau;
 
-    public Guerrier() {
+    public Guerrier(Couleur couleur) {
         setForce(FORCE_BASE);
         setPointsDeVie(PV_MAX_BASE);
+        setCouleur(couleur);
     }
 
     public int getForce() {
         return force;
     }
-
 
 
     public int getPointsDeVie() {
@@ -52,8 +54,7 @@ public abstract class Guerrier {
         this.pointsDeVie = pointDeVie;
     }
 
-    public void setChateau(Chateau chateau) {
-        this.chateau = chateau;
+    public void setCouleur(Couleur couleur){this.couleur = couleur;
     }
 
     public Chateau getChateau() {
@@ -67,8 +68,7 @@ public abstract class Guerrier {
     public boolean estBleu() {
         if (existeChateau()) {
             return this.chateau.estBleu();
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -76,15 +76,18 @@ public abstract class Guerrier {
     public boolean estRouge() {
         if (existeChateau()) {
             return this.chateau.estRouge();
-        }
-        else{
+        } else {
             return false;
         }
 
     }
 
+    public Couleur getCouleur() {
+        return couleur;
+    }
 
-    public int ressourceEntrainement() {
+
+    public int getRessourceEntrainement() {
         return RESSOURCE_BASE;
     }
 
