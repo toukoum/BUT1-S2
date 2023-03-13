@@ -11,6 +11,7 @@ public abstract class Guerrier {
     private Couleur couleur;
 
     private Chateau chateau;
+    private int degatReel;
 
     public Guerrier(Couleur couleur) {
         setForce(FORCE_BASE);
@@ -46,8 +47,11 @@ public abstract class Guerrier {
     }
 
     protected void subirDegat(int degat) {
+        degatReel = degat;
         this.pointsDeVie -= degat;
     }
+
+
 
 
     public void setPointDeVie(int pointDeVie) {
@@ -91,4 +95,7 @@ public abstract class Guerrier {
         return RESSOURCE_BASE;
     }
 
+    public int getDegatReel() {
+        return degatReel;
+    }
 }

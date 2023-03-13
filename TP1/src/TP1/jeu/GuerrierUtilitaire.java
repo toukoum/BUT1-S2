@@ -3,7 +3,7 @@ package TP1.jeu;
 public class GuerrierUtilitaire {
 
     public static void afficherGuerrier(Guerrier guerrier) {
-        System.out.println(guerrier.getClass().getSimpleName() + "_" + guerrier.getCouleur() + "=> [PV" + guerrier.getPointsDeVie() + "], cout : " + guerrier.getRessourceEntrainement());
+        System.out.println(guerrier.getClass().getSimpleName() + "_" + guerrier.getCouleur() + " => [PV" + guerrier.getPointsDeVie() + "], cout : " + guerrier.getRessourceEntrainement());
     }
 
     public static int De3() {
@@ -18,6 +18,9 @@ public class GuerrierUtilitaire {
         }
         return somme;
     }
+
+
+
 
     public static Guerrier createNainBleu() {
         return new Nain(Couleur.Bleu);
@@ -52,4 +55,12 @@ public class GuerrierUtilitaire {
     }
 
 
+    public static void afficherGuerrierLite(Guerrier guerrier) {
+        System.out.print(guerrier.getClass().getSimpleName() + "_" + guerrier.getCouleur() + "[PV" + guerrier.getPointsDeVie() + "] ");
+
+    }
+
+    public static void afficherGuerrierLiteLite(Guerrier guerrier) {
+        System.out.println(guerrier.getClass().getSimpleName() + "_" + guerrier.getCouleur() + "[PV" + guerrier.getPointsDeVie() + "] ");
+    }
 }

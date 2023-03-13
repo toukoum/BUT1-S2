@@ -14,6 +14,7 @@ public class Nain extends Guerrier{
         super.subirDegat(degat/2);
     }
 
+
     @Override
     public int getRessourceEntrainement() {
         return ressourceEntrainement;

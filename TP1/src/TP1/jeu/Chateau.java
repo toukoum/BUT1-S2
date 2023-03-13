@@ -54,15 +54,16 @@ public class Chateau {
                 break;
             }
         }
-        incrementeRessources();
         // Retourne la liste des guerriers entraînés
+
         return listeGuerrierEntrainer;
     }
 
 
 
 
-    private void incrementeRessources() {
+
+    public void incrementeRessources() {
         this.ressources += RESSOURCE_AJOUTER_PAR_TOUR;
     }
 
@@ -81,5 +82,9 @@ public class Chateau {
 
     public int getRessource() {
         return ressources;
+    }
+
+    public void enleveGuerrierEntrainer() {
+        listeGuerrierEntrainer.clear();
     }
 }

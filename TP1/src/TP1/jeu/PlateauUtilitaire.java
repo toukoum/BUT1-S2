@@ -48,22 +48,17 @@ public class PlateauUtilitaire {
      * Affichage des Guerriers sur chaque Carreaux du plateau
      * @param plateau
      */
-    public static void affichePlateau(ArrayList<Carreau> plateau) {
-        System.out.println();
-        System.out.println();
-        System.out.println("----- Plateau -----");
+    public static void affichePlateau2(ArrayList<Carreau> plateau) {
 
         for (int i = 0; i <= plateau.size()-1; i++) {
             int carreaunum = i+1;
             System.out.println("_______CASE_"+carreaunum+"_______");
             if (plateau.get(i).estBleu()) {
-                System.out.println("-Guerrier Bleu-");
                 for (Guerrier guerrier : plateau.get(i).guerriersBleus) {
                     GuerrierUtilitaire.afficherGuerrier(guerrier);
                 }
             }
             if (plateau.get(i).estRouge()) {
-                System.out.println("-Guerrier Rouge-");
                 for (Guerrier guerrier : plateau.get(i).guerriersRouges) {
                     GuerrierUtilitaire.afficherGuerrier(guerrier);
                 }
@@ -72,8 +67,54 @@ public class PlateauUtilitaire {
 
     }
 
+    public static void affichePlateau(ArrayList<Carreau> plateau) {
+        // Affichage de la première ligne du plateau
+        for (int i = 0; i < plateau.size(); i++) {
+            System.out.print("    _______CASE_" + (i + 1) + "_______ ");
+        }
+        System.out.println();
+        for (int j = 0; j < plateau.size(); j++) {
+            if (plateau.get(j).estBleu()) {
 
-    
+                for (Guerrier guerrier : plateau.get(j).guerriersBleus) {
+                    System.out.print(repeatSpaces(4+ (j*4) + (21*j)));
+                    GuerrierUtilitaire.afficherGuerrierLiteLite(guerrier);
+                }
+            }
+        }
+
+        for (int k = plateau.size(); k > 0; k--) {
+            if (plateau.get(k-1).estRouge()) {
+
+                for (Guerrier guerrier : plateau.get(k-1).guerriersRouges) {
+                    System.out.print(repeatSpaces(104 -(((5-k)*4) + (21*(5-k)))));
+                    GuerrierUtilitaire.afficherGuerrierLiteLite(guerrier);
+                }
+            }
+        }
+        System.out.println("    +-------------------+    +-------------------+    +-------------------+    +-------------------+    +-------------------+");
+        System.out.println();
+    }
+
+    public static String repeatSpaces(int x) {
+        String result = "";
+        for (int i = 0; i < x; i++) {
+            result += " ";
+        }
+        return result;
+    }
+
+
+
+
+}
+
+
+
+
+
+
+
     /**
      * Affichage de l'équipe gagnante
      * @param plateau
@@ -84,5 +125,4 @@ public class PlateauUtilitaire {
      * Affichage de tous les Guerriers d'un Carreau
      * @param carreau
      */
-    
-}
+

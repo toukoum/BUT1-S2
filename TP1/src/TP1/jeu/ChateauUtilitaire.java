@@ -1,6 +1,7 @@
 package TP1.jeu;
 
 
+import java.util.ArrayList;
 import java.util.Queue;
 
 /**
@@ -28,9 +29,34 @@ public class ChateauUtilitaire {
     }
 
     public static void afficheDonneeChateau(Chateau chateau) {
+
+
+    }
+
+    public static void afficheEntrainement(Plateau plateau, Chateau chateau) {
+
         chateau.getCouleur().toString();
-        System.out.println("-------- CHATEAU " + chateau.getCouleur().toString() + " -------");
+        System.out.println("-------- CHATEAU " + chateau.getCouleur() + " -------");
         System.out.println("Ressources = " + chateau.getRessource());
+        System.out.println("Unités construites dans ce tour :");
+        if (!chateau.entrainer().isEmpty()) {
+            for (Guerrier guerrier : chateau.entrainer()) {
+                plateau.ajoutGuerriers(chateau, guerrier);
+                System.out.print("    GUERRIER AU COMBAT : ");
+                GuerrierUtilitaire.afficherGuerrier(guerrier);
+            }
+        }
+        else {
+            System.out.println("    AUCUN GUERRIER ENTRAINE !");
+        }
+        if (chateau.getRessource() == 0) {
+            System.out.println("Après entrainement, plus de ressources !\n");
+        }else {
+            System.out.println("Après entrainement, plus que : " + chateau.getRessource() + " ressources.\n");
+        }
+        chateau.incrementeRessources();
+        chateau.enleveGuerrierEntrainer();
+
 
     }
 }

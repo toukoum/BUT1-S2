@@ -37,41 +37,44 @@ public class Plateau {
     }
 
     public void deplaceGuerrier() {
-        if (!estPartieTerminee() && !estChampDeBataille()) {
+
+            // pour savoir si un combat à déja eu lieu
+
             // Parcours du plateau de droite à gauche pour déplacer les Queue de guerrier bleu vers la droite
             for (int i = longueur-1; i >= 0; i--) {
-                if (plateauCarreau.get(i).estBleu()) {
-                    Queue<Guerrier> queueCopie = new LinkedList<>();
+                if (plateauCarreau.get(i).estChampdeBataille()) {
+                    lanceCombat();
+                }
+                // si la case n'a pas de Bleu et de Rouge, on déplace les bleus
+                else {
+                    if (plateauCarreau.get(i).estBleu()) {
+                        Queue<Guerrier> queueCopie = new LinkedList<>();
 
-                    for (Guerrier guerrier : plateauCarreau.get(i).guerriersBleus) {
-                        queueCopie.add(guerrier);
+                        for (Guerrier guerrier : plateauCarreau.get(i).guerriersBleus) {
+                            queueCopie.add(guerrier);
+                        }
+                        plateauCarreau.get(i + 1).setGuerriersBleus(queueCopie);
+                        plateauCarreau.get(i).retirerGuerrierBleu();
                     }
-                    plateauCarreau.get(i + 1).setGuerriersBleus(queueCopie);
-                    plateauCarreau.get(i).retirerGuerrierBleu();
                 }
             }
 
             // Parcours du plateau de gauche à droite pour déplacer les Queue de guerrier Rouge vers la gauche
             for (int i = 0; i < longueur; i++) {
-                if (plateauCarreau.get(i).estRouge()) {
-                    Queue<Guerrier> queueCopie2 = new LinkedList<>();
+                if (plateauCarreau.get(i).estChampdeBataille()) {}
+                // si la case n'a pas de Bleu et de Rouge, on déplace les rouge (si il y en a)
+                else {
+                    if (plateauCarreau.get(i).estRouge()) {
+                        Queue<Guerrier> queueCopie2 = new LinkedList<>();
 
-                    for (Guerrier guerrier : plateauCarreau.get(i).guerriersRouges) {
-                        queueCopie2.add(guerrier);
+                        for (Guerrier guerrier : plateauCarreau.get(i).guerriersRouges) {
+                            queueCopie2.add(guerrier);
+                        }
+                        plateauCarreau.get(i - 1).setGuerriersRouges(queueCopie2);
+                        plateauCarreau.get(i).retirerGuerrierRouge();
                     }
-                    plateauCarreau.get(i - 1).setGuerriersRouges(queueCopie2);
-                    plateauCarreau.get(i).retirerGuerrierRouge();
                 }
             }
-
-        }else if (estPartieTerminee()){
-            System.out.println("Partie terminée !! ");
-            System.out.println("Le grand Gagnant est :" + getGagnant().toString());
-        }else {
-            lanceCombat();
-        }
-
-
     }
 
     public void lanceCombat() {
@@ -79,7 +82,6 @@ public class Plateau {
         for (int i = 0; i < this.longueur; i++) {
             if (plateauCarreau.get(i).estChampdeBataille()) {
                 // lancement du combat dans le carreau qui est un champ de bataille
-                System.out.println("lancement du combat sur la case " + i);
                 plateauCarreau.get(i).lanceCombat();
             }
         }

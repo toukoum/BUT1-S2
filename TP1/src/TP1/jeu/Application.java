@@ -6,6 +6,8 @@ public class Application {
 
     public static void main(String[] args) {
 
+
+
         Scanner scanner = new Scanner(System.in);
 
         // Création du plateau
@@ -24,39 +26,45 @@ public class Application {
         //Bleu
         chateauRouge.ajoutGuerrierNovice(GuerrierUtilitaire.createNainRouge());
         chateauRouge.ajoutGuerrierNovice(GuerrierUtilitaire.createElfeRouge());
-        chateauRouge.ajoutGuerrierNovice(GuerrierUtilitaire.createChefNainRouge());
+        chateauRouge.ajoutGuerrierNovice(GuerrierUtilitaire.createChefElfeRouge());
 
         //Affichage des deux équipes
         ChateauUtilitaire.afficheGuerrierNovice(chateauBleu);
         ChateauUtilitaire.afficheGuerrierNovice(chateauRouge);
 
 
-        System.out.println("\n--- Appuyer sur entrée pour commencer le jeu ---");
+        System.out.print("\n--- Appuyer sur entrée pour commencer le jeu ---");
         scanner.nextLine();
-        
+        scanner.skip(".*");
+
+
 
         ////
         // 4) --Boucle du jeu
-        //while (---) {
+        int nbTour = 1;
+        while (!plateau.estPartieTerminee()) {
+            System.out.println("Plateau (Tour " + nbTour + ")\n");
 
-            // Affichage du numéro de tour
+            ChateauUtilitaire.afficheEntrainement(plateau, chateauBleu);
+            ChateauUtilitaire.afficheEntrainement(plateau, chateauRouge);
 
-            ////
-            // 4.1) -- Entraînement et mise en jeu des Guerriers entraînés
-
-            ////
-            // 4.2) -- Tous les Guerriers des deux camps avance d'un Carreau
-            //           sauf s'il y a un ou plusieurs Guerriers du
-            //           camp adverse sur leur Carreau
+            System.out.println("\n\n----- Plateau (avant déplacement)-----\n");
+            PlateauUtilitaire.affichePlateau(plateau.getPlateauCarreau());
+            plateau.deplaceGuerrier();
+            System.out.println("\n\n----- Plateau (après déplacement)-----\n");
+            PlateauUtilitaire.affichePlateau(plateau.getPlateauCarreau());
 
 
-            ////
-            // 4.3) -- Lancer les combats + affichage des combats (et des morts)
 
-        //}
+            nbTour++;
+            System.out.println("\n--- Appuyer sur entrée pour Jouer le tour " + nbTour + " ---");
+            scanner.nextLine();
+            scanner.skip(".*");
 
-        ////
-        // 5) -- Affichage de l'équipe gagnate
+        }
+
+
+        System.out.println("BRAVO AUX " + plateau.getGagnant() + " !!! Vous avez gagné un saxophone. A récuperer chez vous");
 
     }
 }
