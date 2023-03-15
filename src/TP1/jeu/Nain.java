@@ -2,7 +2,10 @@ package TP1.jeu;
 
 public class Nain extends Guerrier{
 
-    private int ressourceEntrainement = 1;
+    private int ressourceEntrainement3 = 1;
+
+    private final String defenseString4 = "b";
+
     public Nain(Couleur couleur) {
         super(couleur);
         setCouleur(couleur);
@@ -17,7 +20,12 @@ public class Nain extends Guerrier{
 
     @Override
     public int getRessourceEntrainement() {
-        return ressourceEntrainement;
+        return ressourceEntrainement3;
+    }
+
+    @Override
+    public String getDefenseString() {
+        return this.defenseString4;
     }
 
 }

@@ -58,14 +58,23 @@ public class Plateau {
                 plateauCarreau.get(i).retirerGuerrierRouge();
             }
         }
+
     }
+
+
 
     public void lanceCombatFromPlateau() {
         //Parcours de tous le plateau, lance le combat sur le bon carreau
         for (int i = 0; i < this.longueur; i++) {
             if (plateauCarreau.get(i).estChampdeBataille()) {
                 // lancement du combat dans le carreau qui est un champ de bataille
-                plateauCarreau.get(i).lanceCombat();
+                try {
+                    plateauCarreau.get(i).lanceCombat();
+
+                } catch (CoupDivinException e) {
+                    System.out.println(e.getMessage());
+
+                }
             }
         }
     }
@@ -84,8 +93,10 @@ public class Plateau {
         Couleur gagnant;
         if (plateauCarreau.get(0).estRouge()) {
             gagnant = Couleur.Rouge;
-        }else {
+        } else if (plateauCarreau.get(plateauCarreau.size()-1).estBleu()) {
             gagnant = Couleur.Bleu;
+        }else {
+            gagnant = Couleur.noGagnant;
         }
         return gagnant;
     }
@@ -102,5 +113,21 @@ public class Plateau {
         return longueur;
     }
 
+    public void lanceTremblement(int carreauTremblement, Chateau chateau) {
+         // Lance un tremblement de terre sur le carreau spécifié, infligeant des dégâts aléatoires (10 lancés)
+         // à tous les guerriers du château donné sur ce carreau. Les guerriers morts sont retirés de la liste de defenseurs
+
+        int degat = PlateauUtilitaire.De3(10);
+
+        // Pour chaque guerrier du château donné sur le carreau spécifié
+        for (Guerrier guerrier : plateauCarreau.get(carreauTremblement).getGuerriers(chateau)) {
+            guerrier.subirDegat(degat);
+
+            // Si le guerrier est mort, le retirer de la liste des guerriers du château sur ce carreau
+            if (!guerrier.estVivant()) {
+                plateauCarreau.get(carreauTremblement).getGuerriers(chateau).poll();
+            }
+        }
+    }
 }
 

@@ -43,7 +43,16 @@ public class GuerrierUtilitaire {
 
     }
 
-    public static void afficherGuerrierLiteLite(Guerrier guerrier) {
-        System.out.println(guerrier.getClass().getSimpleName() + "_" + guerrier.getCouleur() + "[PV" + guerrier.getPointsDeVie() + "] ");
+    public static void afficherGuerrierLiteLite(Guerrier guerrier, String couleur) {
+        String name = guerrier.getClass().getSimpleName();
+        int couleurInt;
+        if (couleur.compareTo("bleu") == 0) {
+            couleurInt = 34;
+        }else {
+            couleurInt = 31;
+        }
+        System.out.println("\u001b[" + couleurInt + "m" + name + "\u001b[0m" + "_" + guerrier.getCouleur() + "[" + "\u001b[33mPV" + guerrier.getPointsDeVie() + "\u001b[0m]");
     }
+
 }
+

@@ -1,12 +1,28 @@
 package TP1.jeu;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class Carreau {
 
     Queue<Guerrier> guerriersBleus = new LinkedList<>();
     Queue<Guerrier> guerriersRouges = new LinkedList<>();
+
+    public static final Comparator<Guerrier> comparateurDefenseurs = new Comparator<Guerrier>(){
+        @Override
+        public int compare(Guerrier o1, Guerrier o2) {
+            int result = o1.getDefenseString().compareTo(o2.getDefenseString());
+            if (result == 0) {
+                if (o1.getPointsDeVie() < o2.getPointsDeVie()) {
+                    result = 1;
+                } else if (o1.getPointsDeVie() == o2.getPointsDeVie()) {
+                    result = 0;
+                }else {
+                    result = -1;
+                }
+            }
+            return result;
+        }
+    };
 
     public Carreau() {
         setGuerriersBleus(guerriersBleus);
@@ -58,6 +74,8 @@ public class Carreau {
         guerriersRouges.clear();
     }
 
+
+
     public boolean estRouge() {
         return guerriersRouges.size() != 0;
     }
@@ -71,27 +89,32 @@ public class Carreau {
         return estBleu() && estRouge();
     }
 
-    public void lanceCombat() {
+    public void lanceCombat() throws CoupDivinException {
         lanceCombatReel(guerriersBleus, guerriersRouges);
         lanceCombatReel(guerriersRouges, guerriersBleus);
     }
 
-    public void lanceCombatReel(Queue<Guerrier> attaquants, Queue<Guerrier> defenseurs) {
+    public void lanceCombatReel(Queue<Guerrier> attaquants, Queue<Guerrier> defenseurs) throws CoupDivinException {
+        // tri des défenseurs dans le bon ordre
+        Collections.sort((List<Guerrier>)defenseurs, comparateurDefenseurs);
+        for (Guerrier guerrier : defenseurs) {
+            GuerrierUtilitaire.afficherGuerrierLite(guerrier);
+            System.out.println();
+        }
         //tous les attaquants doivent attaquer
         for (int i = 0; i < attaquants.size(); i++) {
 
             int degat = PlateauUtilitaire.De3(attaquants.peek().getForce());
 
-            // Pour le coup divin
+            // Pour le COUP DIVIN
             int forceAttaquant = attaquants.peek().getForce();
-            int degatMax = 3*forceAttaquant;
-
+            double degatMax = 0.8*(3*forceAttaquant);
             if (degat > degatMax) {
-                try {
-                    throw new CoupDivinException();
-                } catch (CoupDivinException e) {
-                    throw new RuntimeException(e);
-                }
+                System.out.print("    \u001b[30mCOMBAT : \u001b[0m");
+                GuerrierUtilitaire.afficherGuerrierLite(attaquants.peek());
+                System.out.println(" vient de tuer tous les guerriers actuellement sur sa case");
+                this.retirerGuerrierDeffenseurs(defenseurs);
+                throw new CoupDivinException("    \u001b[33mCOUP DIVIN: \u001b[0mINCROYABLE !!");
             }
 
             // verif s'il n'y a plus de guerrier à tuer chez les bleus
@@ -101,8 +124,7 @@ public class Carreau {
                 // vérif de savoir si le guerrier rouge attaqué est mort
                 if (!defenseurs.peek().estVivant()) {
                     // si il est mort, on le supprime de la Queue
-                    PlateauUtilitaire.afficheMort(defenseurs.peek());
-                    defenseurs.poll();
+                    PlateauUtilitaire.afficheMort(attaquants.peek(), defenseurs.poll());
                     if (defenseurs.isEmpty()) {
                         break;
                     }
@@ -112,5 +134,21 @@ public class Carreau {
             attaquants.offer(attaquants.poll());
         }
 
+    }
+
+    private void retirerGuerrierDeffenseurs(Queue<Guerrier> defenseurs) {
+        if (defenseurs.peek().getCouleur().compareTo(Couleur.Bleu) == 0) {
+            this.retirerGuerrierBleu();
+        }else {
+            this.retirerGuerrierRouge();
+        }
+    }
+
+    public Queue<Guerrier> getGuerriers(Chateau chateau) {
+        if (chateau.estBleu()) {
+            return guerriersBleus;
+        }else {
+            return guerriersRouges;
+        }
     }
 }

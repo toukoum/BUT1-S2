@@ -2,7 +2,8 @@ package TP1.jeu;
 
 public enum Couleur {
     Bleu,
-    Rouge;
+    Rouge,
+    noGagnant;
 
     private Couleur() {
     }

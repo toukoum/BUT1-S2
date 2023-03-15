@@ -10,8 +10,8 @@ public abstract class Guerrier {
 
     private Couleur couleur;
 
-    private Chateau chateau;
     private int degatReel;
+    private String defenseString1;
 
     public Guerrier(Couleur couleur) {
         setForce(FORCE_BASE);
@@ -65,5 +65,10 @@ public abstract class Guerrier {
 
     public int getDegatReel() {
         return degatReel;
+    }
+
+
+    public String getDefenseString() {
+        return this.defenseString1;
     }
 }

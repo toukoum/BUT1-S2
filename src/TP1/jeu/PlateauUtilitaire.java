@@ -1,13 +1,16 @@
 package TP1.jeu;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  *
  * @author raphael giraud
  */
 public class PlateauUtilitaire {
+
 
     private static final Random RANDOM = new Random();
 
@@ -47,38 +50,41 @@ public class PlateauUtilitaire {
 
     public static void affichePlateau(ArrayList<Carreau> plateau, Chateau chateauBleu, Chateau chateauRouge) {
         // Affichage de la première ligne du plateau
-        System.out.print("CHATEAU " + chateauBleu.getCouleur());
+
+        System.out.print("\u001b[34m_CHATEAU_\u001b[0m");
+
         for (int i = 0; i < plateau.size(); i++) {
 
-            System.out.print(" _______CASE_" + (i + 1) + "_______ ");
+            System.out.print("_______CASE_\u001b[32m" + (i + 1) + "\u001b[0m_______ ");
 
         }
-        System.out.print("CHATEAU " + chateauRouge.getCouleur());
+        System.out.print("\u001b[31m_CHATEAU_\u001b[0m");
         System.out.println();
         for (int j = 0; j < plateau.size(); j++) {
             if (plateau.get(j).estBleu()) {
 
                 for (Guerrier guerrier : plateau.get(j).guerriersBleus) {
-                    System.out.print(repeatSpaces(12+ (j*2) + (20*j)));
-                    System.out.print(" ");
-                    GuerrierUtilitaire.afficherGuerrierLiteLite(guerrier);
+                    System.out.print(repeatSpaces(10));
+                    System.out.print(repeatSpaces((j) + (20*j)));
+                    GuerrierUtilitaire.afficherGuerrierLiteLite(guerrier, "bleu");
                 }
             }
         }
 
         for (int k = plateau.size(); k > 0; k--) {
             if (plateau.get(k-1).estRouge()) {
-
                 for (Guerrier guerrier : plateau.get(k-1).guerriersRouges) {
-                    System.out.print(repeatSpaces(210 -(((plateau.size()-k)*2) + (20*(plateau.size()-k)))));
+                    System.out.print(repeatSpaces((114 - (((plateau.size() - k) * 1) + (20 * (plateau.size() - k))))));
                     System.out.print(" ");
-                    GuerrierUtilitaire.afficherGuerrierLiteLite(guerrier);
+                    GuerrierUtilitaire.afficherGuerrierLiteLite(guerrier, "rouge");
                 }
             }
         }
-        System.out.print(repeatSpaces(11));
-        System.out.println((repeatSpaces(2) + "+------------------+").repeat(plateau.size()));
-        System.out.println();
+        System.out.print("\u001b[34m--BLEU---\u001b[0m");
+        System.out.print(("+------------------+ ").repeat(plateau.size()));
+        System.out.print("\u001b[31m--ROUGE---\u001b[0m");
+        System.out.println("\n");
+
     }
 
     public static String repeatSpaces(int x) {
@@ -91,7 +97,7 @@ public class PlateauUtilitaire {
 
 
     public static void afficheAttaque(Guerrier attaquant, Guerrier defenseur, int degat) {
-        System.out.print("    COMBAT : ");
+        System.out.print("    \u001b[30mCOMBAT : \u001b[0m");
         GuerrierUtilitaire.afficherGuerrierLite(attaquant);
         System.out.print("nique la gueule à ");
         GuerrierUtilitaire.afficherGuerrierLite(defenseur);
@@ -99,19 +105,76 @@ public class PlateauUtilitaire {
     }
 
 
-
-    public static void afficheMort(Guerrier guerrier) {
-        System.out.print("    MORT : " );
-        GuerrierUtilitaire.afficherGuerrierLite(guerrier);
+    public static void afficheMort(Guerrier vivant, Guerrier mort) {
+        System.out.print("    \u001b[30mMORT : \u001b[0m" );
+        GuerrierUtilitaire.afficherGuerrierLite(vivant);
         System.out.print("KILL ");
-        GuerrierUtilitaire.afficherGuerrierLite(guerrier);
+        GuerrierUtilitaire.afficherGuerrierLite(mort);
+        System.out.println();
     }
 
     public static void afficheBienvenu(Plateau plateau) {
-        System.out.println("  _______ _______ .     .      _______ _______ _______ _______ .     . .     . ");
-        System.out.println("      |   |       |     |      |       |     | |       |     | |     | | \\   | ");
-        System.out.println("      |   ----    |     |      ----    ------- ----    ------- |     | |  \\  | ");
-        System.out.println("  |___|   |______ |_____|      |       |     | |______ |   \\   |_____| |   \\ | ");
+        System.out.println("\u001b[35m _______ _______ .     .      _______ _______ _______ _______ .     . .     . ");
+        System.out.println("     |   |       |     |      |       |     | |       |     | |     | | \\   | ");
+        System.out.println("     |   ----    |     |      ----    ------- ----    ------- |     | |  \\  | ");
+        System.out.println(" |___|   |______ |_____|      |       |     | |______ |   \\   |_____| |   \\ | \u001b[0m");
     }
+
+    public static void afficheGagnant(Plateau plateau) {
+        if (!(plateau.getGagnant().compareTo(Couleur.noGagnant) == 0)) {
+            System.out.println("\u001b[35mBRAVO AUX " + plateau.getGagnant() + "\u001b[35m !!! Vous avez gagné un saxophone. A récuperer chez vous\u001b[0m");
+        }else {
+            System.out.println("\u001b[35mPas encore de gagnant ! \u001b[0m(partie non terminée)");
+        }
+    }
+
+    public static int saisirnombre(int min, int max) {
+        Scanner scanner = new Scanner(System.in);
+
+        int result = 0;
+        System.out.print("Veuillez saisir un carreau (entre " + min + " et " + max + ") : ");
+        do {
+            try {
+                result = scanner.nextInt();
+                scanner.nextLine();
+                checkInRange(result, min, max);
+            } catch (InputMismatchException e) {
+                System.out.println("Vous n'avez pas saisie un nombre, réessayer.");
+                scanner.nextLine();
+            } catch (IllegalArgumentException e) {
+                System.out.println("Vous n'avez pas saisie un nombre entre 1 et 6, réessayer.");
+            }
+        } while (result < min || result > max);
+
+        return result;
+    }
+
+
+    public static void checkInRange(int value, int min, int max) {
+        if (value < min || value > max) {
+            throw new IllegalArgumentException("La valeur doit être entre " + min + " et " + max + " !");
+        }
+    }
+
+    public static String saisirMot(String mot1, String mot2) {
+        Scanner scanner = new Scanner(System.in);
+        String motSaisi;
+        boolean motValide = false;
+
+        do {
+            motSaisi = scanner.nextLine().trim();
+
+            if (motSaisi.equalsIgnoreCase(mot1)) {
+                motValide = true;
+            } else if (motSaisi.equalsIgnoreCase(mot2)) {
+                motValide = true;
+            } else {
+                System.out.println("Le mot saisi n'est pas valide, réessayer.");
+            }
+        } while (!motValide);
+
+        return motSaisi;
+    }
+
 }
 

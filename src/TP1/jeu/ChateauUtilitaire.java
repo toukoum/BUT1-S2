@@ -1,7 +1,6 @@
 package TP1.jeu;
 
 
-import java.util.ArrayList;
 import java.util.Queue;
 
 /**
@@ -14,7 +13,6 @@ public class ChateauUtilitaire {
     ///////////////////////
     public static void afficheGuerrierNovice(Chateau chateau) {
         chateau.getCouleur().toString();
-        System.out.println("\n---- Listes des Guerriers novice ----");
         System.out.println("Ordre entrainement du Chateau " + chateau.getCouleur());
         for (Guerrier guerrier : chateau.listeGuerrierNovice) {
             GuerrierUtilitaire.afficherGuerrier(guerrier);
@@ -27,12 +25,6 @@ public class ChateauUtilitaire {
             System.out.println(guerrier.getClass().getSimpleName());
         }
     }
-
-    public static void afficheDonneeChateau(Chateau chateau) {
-
-
-    }
-
     public static void afficheEntrainement(Plateau plateau, Chateau chateau) {
 
         chateau.getCouleur().toString();
