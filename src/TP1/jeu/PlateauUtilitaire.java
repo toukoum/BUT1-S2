@@ -114,11 +114,23 @@ public class PlateauUtilitaire {
     }
 
     public static void afficheBienvenu(Plateau plateau) {
+        String saisieUser;
         System.out.println("\u001b[35m _______ _______ .     .      _______ _______ _______ _______ .     . .     . ");
         System.out.println("     |   |       |     |      |       |     | |       |     | |     | | \\   | ");
         System.out.println("     |   ----    |     |      ----    ------- ----    ------- |     | |  \\  | ");
         System.out.println(" |___|   |______ |_____|      |       |     | |______ |   \\   |_____| |   \\ | \u001b[0m");
+        System.out.println("\n_____________________________________________________________________________");
+        System.out.println("                   BIENVENUE DANS LE JEU DE FAERUN");
+        System.out.println("_____________________________________________________________________________");
+        System.out.print("\nVoulez-vous afficher les règles de Jeu ? (o,n) : ");
+        saisieUser = saisirMot("o", "n");
+
+        if (saisieUser.compareTo("o") == 0) {
+            System.out.println("Cliquez sur le lien suivant : <a href=\"https://www.legrog.org/jeux/d-d3-royaumes-oublies/manuel-des-joueurs-de-faerun-fr\"</a>");
+        }
+
     }
+
 
     public static void afficheGagnant(Plateau plateau) {
         if (!(plateau.getGagnant().compareTo(Couleur.noGagnant) == 0)) {
@@ -176,5 +188,17 @@ public class PlateauUtilitaire {
         return motSaisi;
     }
 
+    public static void afficheTremblement(Guerrier guerrier) {
+        System.out.print("    \u001b[30mTREMBLEMENT : \u001b[0m");
+        GuerrierUtilitaire.afficherGuerrierLite(guerrier);
+        System.out.println("subit " + guerrier.getDegatReel() + " PV du tremblement de terre.");
+
+    }
+
+    public static void afficheTremblementMort(Guerrier guerrier) {
+        System.out.print("    \u001b[30mTREMBLEMENT : \u001b[0m");
+        GuerrierUtilitaire.afficherGuerrierLite(guerrier);
+        System.out.println("subit " + guerrier.getDegatReel() + " PV du tremblement de terre, terrible mort !");
+    }
 }
 

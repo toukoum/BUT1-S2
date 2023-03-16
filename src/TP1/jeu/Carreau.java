@@ -1,8 +1,9 @@
 package TP1.jeu;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Carreau {
+public class Carreau implements Serializable {
 
     Queue<Guerrier> guerriersBleus = new LinkedList<>();
     Queue<Guerrier> guerriersRouges = new LinkedList<>();
@@ -27,14 +28,6 @@ public class Carreau {
     public Carreau() {
         setGuerriersBleus(guerriersBleus);
         setGuerriersRouges(guerriersRouges);
-    }
-
-    public Queue<Guerrier> getGuerriersBleus() {
-        return guerriersBleus;
-    }
-
-    public Queue<Guerrier> getGuerriersRouges() {
-        return guerriersRouges;
     }
 
     public void setGuerriersBleus(Queue<Guerrier> guerriersBleus) {

@@ -1,6 +1,8 @@
 package TP1.jeu;
 
-public class Elfe extends Guerrier {
+import java.io.Serializable;
+
+public class Elfe extends Guerrier implements Serializable {
     private int ressourceEntrainement = 2;
     private final String defenseString2 = "c";
 

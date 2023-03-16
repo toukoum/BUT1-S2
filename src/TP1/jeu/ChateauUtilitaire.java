@@ -1,6 +1,5 @@
 package TP1.jeu;
 
-
 import java.util.Queue;
 
 /**
@@ -37,8 +36,7 @@ public class ChateauUtilitaire {
                 System.out.print("    GUERRIER AU COMBAT : ");
                 GuerrierUtilitaire.afficherGuerrier(guerrier);
             }
-        }
-        else {
+        } else {
             System.out.println("    AUCUN GUERRIER ENTRAINE !");
         }
         if (chateau.getRessource() == 0) {

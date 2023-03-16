@@ -1,4 +1,4 @@
-//package TP1.jeu;
+package TP1.jeu;//package TP1.jeu;
 //
 //public class TestJeuEtape3 {
 //

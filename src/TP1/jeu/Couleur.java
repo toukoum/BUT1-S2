@@ -1,6 +1,8 @@
 package TP1.jeu;
 
-public enum Couleur {
+import java.io.Serializable;
+
+public enum Couleur implements Serializable {
     Bleu,
     Rouge,
     noGagnant;

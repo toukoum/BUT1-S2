@@ -1,3 +1,0 @@
-Pour executer le JAR (Java ARchive) taper la commande :
-
-java -jar JeuFaerun.jar

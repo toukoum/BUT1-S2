@@ -1,12 +1,15 @@
 package TP1.jeu;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Plateau {
+public class Plateau implements Serializable {
     private int longueur;
     private ArrayList<Carreau> plateauCarreau = new ArrayList<>();
+
+    private int nbTour = 1;
 
     public Plateau(int longueur) {
         this.longueur = longueur;
@@ -101,17 +104,6 @@ public class Plateau {
         return gagnant;
     }
 
-    public ArrayList<Carreau> getCarreaux() {
-        return this.plateauCarreau;
-    }
-
-    public int getDepartBleu() {
-        return 0;
-    }
-
-    public int getDepartRouge() {
-        return longueur;
-    }
 
     public void lanceTremblement(int carreauTremblement, Chateau chateau) {
          // Lance un tremblement de terre sur le carreau spécifié, infligeant des dégâts aléatoires (10 lancés)
@@ -122,12 +114,25 @@ public class Plateau {
         // Pour chaque guerrier du château donné sur le carreau spécifié
         for (Guerrier guerrier : plateauCarreau.get(carreauTremblement).getGuerriers(chateau)) {
             guerrier.subirDegat(degat);
+            PlateauUtilitaire.afficheTremblement(guerrier);
 
             // Si le guerrier est mort, le retirer de la liste des guerriers du château sur ce carreau
             if (!guerrier.estVivant()) {
                 plateauCarreau.get(carreauTremblement).getGuerriers(chateau).poll();
+                PlateauUtilitaire.afficheTremblementMort(guerrier);
+
             }
         }
     }
+
+    public int getNbTour() {
+        return nbTour;
+    }
+
+    public void incrementeNbTour() {
+        nbTour +=1;
+    }
+
+
 }
 

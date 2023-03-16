@@ -1,6 +1,8 @@
 package TP1.jeu;
 
-public abstract class Guerrier {
+import java.io.Serializable;
+
+public abstract class Guerrier implements Serializable {
 
     private int force;
     private int pointsDeVie;
@@ -12,6 +14,8 @@ public abstract class Guerrier {
 
     private int degatReel;
     private String defenseString1;
+
+    public Guerrier() {}
 
     public Guerrier(Couleur couleur) {
         setForce(FORCE_BASE);

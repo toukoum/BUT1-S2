@@ -1,10 +1,11 @@
 package TP1.jeu;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Chateau {
-    private final int RESSOURCE_INITIAL = 30;
+public class Chateau implements Serializable {
+    private final int RESSOURCE_INITIAL = 3;
     private final int RESSOURCE_AJOUTER_PAR_TOUR = 1;
 
     private int ressources;
