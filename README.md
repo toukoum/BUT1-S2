@@ -1,4 +1,4 @@
-# BUT1-S2 (R2.01(a)
+# BUT1-S2 (R2.01a)
 
 All of my lesson in Java for my **second semestre** in BUT Informatique Grenoble
 POO (programation orienté objet)
