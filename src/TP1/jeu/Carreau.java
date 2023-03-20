@@ -90,10 +90,7 @@ public class Carreau implements Serializable {
     public void lanceCombatReel(Queue<Guerrier> attaquants, Queue<Guerrier> defenseurs) throws CoupDivinException {
         // tri des défenseurs dans le bon ordre
         Collections.sort((List<Guerrier>)defenseurs, comparateurDefenseurs);
-        for (Guerrier guerrier : defenseurs) {
-            GuerrierUtilitaire.afficherGuerrierLite(guerrier);
-            System.out.println();
-        }
+
         //tous les attaquants doivent attaquer
         for (int i = 0; i < attaquants.size(); i++) {
 
