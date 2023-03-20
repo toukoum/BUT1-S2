@@ -1,10 +1,10 @@
 package TP1.jeu;
 
-import java.util.Queue;
-
 /**
- *
- * @author fbm rev hb
+ * @Class ChateauUtilitaire
+ * <p>
+ *     Classe utilitaire pour la classe Chateau
+ *     Contient les méthodes d'affichage des guerriers novices et entrainés
  */
 public class ChateauUtilitaire {
 
@@ -15,13 +15,6 @@ public class ChateauUtilitaire {
         System.out.println("Ordre entrainement du Chateau " + chateau.getCouleur());
         for (Guerrier guerrier : chateau.listeGuerrierNovice) {
             GuerrierUtilitaire.afficherGuerrier(guerrier);
-        }
-    }
-
-    public static void afficheGuerrierEntrainer(Queue<Guerrier> guerriers) {
-        System.out.println("---- Listes des Guerriers entrainé ----");
-        for (Guerrier guerrier : guerriers) {
-            System.out.println(guerrier.getClass().getSimpleName());
         }
     }
     public static void afficheEntrainement(Plateau plateau, Chateau chateau) {

@@ -5,6 +5,15 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
+
+/**
+ * @Class Plateau
+ * <p>
+ *     Classe représentant le plateau de jeu
+ *     Un plateau contient un ArrayList de Carreau de longueur longueur
+ *     Contient la méthode deplaceGuerrier() qui permet de déplacer un guerrier sur le plateau
+ */
+
 public class Plateau implements Serializable {
     private int longueur;
     private ArrayList<Carreau> plateauCarreau = new ArrayList<>();
@@ -43,9 +52,12 @@ public class Plateau implements Serializable {
 
         // parcours de droite à gauche pour déplacer les bleus
         for (int i = longueur - 1; i >= 0; i--) {
+
+            // si le carreau est un champ de bataille, on lance le combat
             if (plateauCarreau.get(i).estChampdeBataille()) {
                 lanceCombatFromPlateau();
             } else if (plateauCarreau.get(i).estBleu()) {
+                // sinon si le carreau est bleu, on déplace les guerriers sur le carreau suivant
                 Queue<Guerrier> queueCopie = new LinkedList<>(plateauCarreau.get(i).guerriersBleus);
                 plateauCarreau.get(i + 1).setGuerriersBleus(queueCopie);
                 plateauCarreau.get(i).retirerGuerrierBleu();
@@ -54,8 +66,10 @@ public class Plateau implements Serializable {
 
         // parcours de gauche à droite pour déplacer les rouges
         for (int i = 0; i < longueur; i++) {
+            // si le carreau est un champ de bataille, on ne fait rien car le combat a déjà été lancé
             if (plateauCarreau.get(i).estChampdeBataille()) {}
             else if(plateauCarreau.get(i).estRouge()) {
+                // sinon si le carreau est rouge, on déplace les guerriers sur le carreau suivant
                 Queue<Guerrier> queueCopie = new LinkedList<>(plateauCarreau.get(i).guerriersRouges);
                 plateauCarreau.get(i - 1).setGuerriersRouges(queueCopie);
                 plateauCarreau.get(i).retirerGuerrierRouge();
@@ -93,6 +107,7 @@ public class Plateau implements Serializable {
     }
 
     public Couleur getGagnant(){
+        // retourne le gagnant de la partie, si il n'y a pas de gagnant, retourne noGagnant (Partie non terminée)
         Couleur gagnant;
         if (plateauCarreau.get(0).estRouge()) {
             gagnant = Couleur.Rouge;

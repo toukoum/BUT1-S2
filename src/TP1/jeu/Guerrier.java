@@ -1,7 +1,13 @@
 package TP1.jeu;
 
 import java.io.Serializable;
-
+/**
+ * @Class Guerrier
+ * <p>
+ *     Classe abstraite représentant un guerrier
+ *     Contient les attributs et méthodes communes aux guerriers
+ *     Contient la méthode attaquer() qui permet d'attaquer un guerrier adverse
+ */
 public abstract class Guerrier implements Serializable {
 
     private int force;
@@ -14,7 +20,6 @@ public abstract class Guerrier implements Serializable {
 
     private int degatReel;
     private String defenseString1;
-
     public Guerrier() {}
 
     public Guerrier(Couleur couleur) {
@@ -71,7 +76,9 @@ public abstract class Guerrier implements Serializable {
         return degatReel;
     }
 
-
+    /**
+    * Méthode qui retourne le rang de défense du guerrier (voir la classe Carreau comparable)
+     */
     public String getDefenseString() {
         return this.defenseString1;
     }

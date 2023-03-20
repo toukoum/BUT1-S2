@@ -2,9 +2,7 @@ package TP1.jeu;
 
 public class GuerrierUtilitaire {
 
-    public static void afficherGuerrier(Guerrier guerrier) {
-        System.out.println(guerrier.getClass().getSimpleName() + "_" + guerrier.getCouleur() + " => [PV" + guerrier.getPointsDeVie() + "], cout : " + guerrier.getRessourceEntrainement());
-    }
+
     public static Guerrier createNainBleu() {
         return new Nain(Couleur.Bleu);
     }
@@ -37,6 +35,10 @@ public class GuerrierUtilitaire {
         return new ChefElfe(Couleur.Rouge);
     }
 
+
+    public static void afficherGuerrier(Guerrier guerrier) {
+        System.out.println(guerrier.getClass().getSimpleName() + "_" + guerrier.getCouleur() + " => [PV" + guerrier.getPointsDeVie() + "], cout : " + guerrier.getRessourceEntrainement());
+    }
 
     public static void afficherGuerrierLite(Guerrier guerrier) {
         System.out.print(guerrier.getClass().getSimpleName() + "_" + guerrier.getCouleur() + "[PV" + guerrier.getPointsDeVie() + "] ");

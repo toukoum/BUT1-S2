@@ -6,8 +6,11 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
+ * @Class PlateauUtilitaire
+ * <p>
+ *     Classe utilitaire pour le plateau
+ *     Contient les méthodes pour lancer un dé, afficher le plateau, déplacer un guerrier sur le plateau
  *
- * @author raphael giraud
  */
 public class PlateauUtilitaire {
 
@@ -26,7 +29,7 @@ public class PlateauUtilitaire {
     /**
      * nombreLances d'un dé 3 faces
      * @param nombreLances
-     * @return
+     * @return somme des lancés
      */
     public static int De3(int nombreLances) {
         int somme = 0;
@@ -114,6 +117,8 @@ public class PlateauUtilitaire {
     }
 
     public static void afficheBienvenu(Plateau plateau) {
+        // et oui, je me suis fait chier... :D
+
         String saisieUser;
         System.out.println("\u001b[35m _______ _______ .     .      _______ _______ _______ _______ .     . .     . ");
         System.out.println("     |   |       |     |      |       |     | |       |     | |     | | \\   | ");
@@ -169,6 +174,9 @@ public class PlateauUtilitaire {
     }
 
     public static String saisirMot(String mot1, String mot2) {
+        // permet de saisir un mot et de vérifier qu'il est valide, si non, on redemande, jusqu'à ce que le mot soit valide
+        // @return le mot valide saisi
+
         Scanner scanner = new Scanner(System.in);
         String motSaisi;
         boolean motValide = false;

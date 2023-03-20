@@ -1,6 +1,12 @@
 package TP1.jeu;
 
 import java.io.Serializable;
+/**
+ * @Class Couleur
+ * <p>
+ *     Enumération représentant les couleurs des joueurs
+ *     Contient la méthode toString() qui permet d'afficher la couleur en console
+ */
 
 public enum Couleur implements Serializable {
     Bleu,

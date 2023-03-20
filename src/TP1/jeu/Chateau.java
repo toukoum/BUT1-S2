@@ -3,7 +3,13 @@ package TP1.jeu;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.Queue;
-
+/**
+ * @Class Chateau
+ * <p>
+ *     Classe représentant un chateau du jeu
+ *     Un chateau peut contenir des guerriers novices et des guerriers entrainés
+ *     Contient la méthode entrainer() qui permet d'entrainer les guerriers novices en utilisant les ressources disponibles
+ */
 public class Chateau implements Serializable {
     private final int RESSOURCE_INITIAL = 3;
     private final int RESSOURCE_AJOUTER_PAR_TOUR = 1;
@@ -26,12 +32,6 @@ public class Chateau implements Serializable {
     public void ajoutGuerrierNovice(Guerrier guerrier) {
         listeGuerrierNovice.add(guerrier);
     }
-
-    public Queue<Guerrier> getGuerrierNovice() {
-        return listeGuerrierNovice;
-    }
-
-
 
 
     public Queue<Guerrier> entrainer() {
@@ -75,10 +75,6 @@ public class Chateau implements Serializable {
 
     public boolean estBleu() {
         return this.couleur == Couleur.Bleu;
-    }
-
-    public boolean estRouge() {
-        return this.couleur == Couleur.Rouge;
     }
 
     public int getRessource() {

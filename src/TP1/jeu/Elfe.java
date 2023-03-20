@@ -1,5 +1,4 @@
 package TP1.jeu;
-
 import java.io.Serializable;
 
 public class Elfe extends Guerrier implements Serializable {
