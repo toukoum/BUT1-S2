@@ -7,7 +7,7 @@ POO (programation orienté objet)
 ## JEU FAERUN
 
 Run the game with the command : **python3 Application.py**
-Or directly in your IDE
+or directly in your IDE
 
 
 
