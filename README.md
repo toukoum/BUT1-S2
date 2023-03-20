@@ -9,5 +9,3 @@ POO (programation orienté objet)
 Run the game with the command : **python3 Application.py**
 or directly in your IDE
 
-
-
