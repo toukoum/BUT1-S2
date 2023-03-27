@@ -83,7 +83,7 @@ public class TestTableDOperation {
         // Affichage du résultat
         System.out.println("\n--- Résultat ---");
         System.out.println("Vous avez " + tableDOperation.getNombreReponseJuste() + " réponses justes sur " + tableDOperation.getNombreOperation() + " opérations.");
-        // rodrimax : pourquoi il aussi bo ?
+        // rodrimax : pourquoi il aussi bo ? parce que il est beau
 
     }
 
