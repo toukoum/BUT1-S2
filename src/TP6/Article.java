@@ -1,7 +1,6 @@
 package TP6;
 
-import TP1.universite.EtudiantUtilitaire;
-
+// raphael le plus fort
 public class Article {
     private String intitule;
     private double prix;
