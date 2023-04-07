@@ -8,8 +8,7 @@ public class Article {
 
     private final int SEUIL = 100;
 
-    public Article(String intitule, double prix, int stock) throws IntituleException, PrixException {
-
+    public Article(String intitule, double prix, int stock)throws PrixException, IntituleException{
         setStock(stock);
         setIntitule(intitule);
         setPrix(prix);
@@ -33,12 +32,10 @@ public class Article {
     }
 
 
-    public double getPrix() {
-        return prix;
-    }
+    public double getPrix() {return prix;}
 
 
-    public double gePris(int quantite) {
+    public double getPrix(int quantite) {
         // retourne le prix unitaire si la quantité demandée est
         //inférieur à 100, retourne le prix unitaire avec une ristourne de 10% si la quantité
         //demandée est supérieur ou égal à 100. Créer une constante SEUIL égale à 100 pour
