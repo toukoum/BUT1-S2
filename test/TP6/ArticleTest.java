@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 
 class ArticleTest {
-
+    // Test de la méthode getIntitule()
     @Test
     void getIntitule() throws IntituleException, PrixException {
         Article article1 = new Article("minuscule", 2.0, 10);
