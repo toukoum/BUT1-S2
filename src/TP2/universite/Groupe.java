@@ -17,9 +17,6 @@ public class Groupe {
         return libelle;
     }
 
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
-    }
 
     public void addEtudiant(Etudiant etudiant) {
         etudiants.add(etudiant);
@@ -28,11 +25,6 @@ public class Groupe {
 
     public void removeEtudiant(Etudiant etudiant) {
         etudiants.remove(etudiant);
-    }
-
-
-    public boolean containsEtudiant(Etudiant etudiant) {
-        return etudiants.contains(etudiant);
     }
 
     public TreeSet<Etudiant> getEtudiants() {

@@ -1,0 +1,67 @@
+
+// TD 2 => héritage (extend, super, classe abstraite)
+
+        SURCHARGE => @Override
+                     public String getMail() {
+                        return getPrenom() + "." + getNom() + "@etu.univ-grenoble-alpes.fr";
+                     }
+
+        REDEFINITION => public void setAdresse(String adresse, String adresseParent) {
+                            setAdresse(adresse); // méthode de Personne
+                            this.adresseParent = adresseParent;
+                        }
+
+// td 3 => polymorphisme, collection, comparaison
+
+        _______
+        ArrayList<Personne> personnes = new ArrayList<>();
+
+        Etudiant et1 = new Etudiant("blanchonp", "blanchon", "philippe", groupeA);
+        personnes.add(et1); // ajouts de Etudiant dans un ArrayList de Personnes
+
+        Personnel per1 = new Personnel("goulianh", "goulian", "herve");
+        personnes.add(per1); // ajouts de Personnel dans un ArrayList de Personnes
+
+        for(Personne personne : personnes) {
+            System.out.println(personne.getMail());
+        }
+
+        _____
+        -> ArrayList est efficace pour l'accès aux éléments par indice et les opérations d'ajout/suppression en fin de liste.
+
+        -> TreeSet est trié et utilise un arbre binaire, mais est moins efficace que HashSet pour les opérations d'ajout,
+        de suppression et de recherche. Les éléments sont triés dans l’ordre naturel ou en utilisant un comparateur
+        (Comparator) utilisé lors de la création du TreeSet.
+
+        -> LinkedList utilise une liste chainée pour ranger les données, ce qui la rend rapide pour l'ajout et la suppression
+        d'éléments à n'importe quelle position, mais très lent pour l'accès aux valeurs par indice. PriorityQueue est une autre option à considérer.
+
+        _____
+        L'interface Comparable en Java permet de définir un ordre naturel pour les objets d'une classe. Si une classe a
+        besoin d'être triée selon cet ordre naturel, elle doit implémenter l'interface Comparable et redéfinir la méthode "compareTo"
+
+        => @override
+           public int compareTo(MaClasse unObjet) {
+
+
+        INTERGACE COMPARATOR => tp 3 -> etudiant
+
+// TD4
+
+        ITERRATOR => TP 4 -> collection
+
+        Exception (throws, try/catch/finally)
+
+
+// TD5
+
+        Logger => testtabledoperation
+
+// TD6
+
+        Test unitaire => articleTest
+
+
+
+
+
