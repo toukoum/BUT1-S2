@@ -20,6 +20,8 @@ public class Plateau implements Serializable {
 
     private int nbTour = 1;
 
+    private boolean modeTremblement;
+
     public Plateau(int longueur) {
         this.longueur = longueur;
         setPlateauCarreau();
@@ -48,8 +50,7 @@ public class Plateau implements Serializable {
 
 
 
-    public void deplaceGuerrier() {
-
+    public void deplaceGuerrier(){
         // parcours de droite à gauche pour déplacer les bleus
         for (int i = longueur - 1; i >= 0; i--) {
 
@@ -75,6 +76,8 @@ public class Plateau implements Serializable {
                 plateauCarreau.get(i).retirerGuerrierRouge();
             }
         }
+
+
 
     }
 
@@ -121,6 +124,8 @@ public class Plateau implements Serializable {
 
 
     public void lanceTremblement(int carreauTremblement, Chateau chateau) {
+
+
          // Lance un tremblement de terre sur le carreau spécifié, infligeant des dégâts aléatoires (10 lancés)
          // à tous les guerriers du château donné sur ce carreau. Les guerriers morts sont retirés de la liste de defenseurs
 
@@ -135,9 +140,9 @@ public class Plateau implements Serializable {
             if (!guerrier.estVivant()) {
                 plateauCarreau.get(carreauTremblement).getGuerriers(chateau).poll();
                 PlateauUtilitaire.afficheTremblementMort(guerrier);
-
             }
         }
+
     }
 
     public int getNbTour() {
@@ -148,6 +153,14 @@ public class Plateau implements Serializable {
         nbTour +=1;
     }
 
+
+    public void setModeTremblement(boolean modeTremblement) {
+        this.modeTremblement = modeTremblement;
+    }
+
+    public boolean getModeTremblement() {
+        return modeTremblement;
+    }
 
 }
 

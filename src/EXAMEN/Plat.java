@@ -58,6 +58,7 @@ public class Plat {
         return coutDeFabrication;
     }
 
+
     /**
      * Modifie le cout de fabrication du plat
      * <br/>Lève une exception si les paramètres fournis ne correspondent pas aux contraintes imposées par le client

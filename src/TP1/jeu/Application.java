@@ -140,6 +140,16 @@ public class Application {
             //Affichage bienvenu
             PlateauUtilitaire.afficheBienvenu(plateau);
 
+
+            //Mode tremblement de terre ou pas ?
+            System.out.print("\u001b[36mVoulez vous activer le mode tremblement de terre ? (o,n) : \u001b[0m");
+            String saisieUser = PlateauUtilitaire.saisirMot("o", "n");
+            if (saisieUser.compareTo("o") == 0) {
+                plateau.setModeTremblement(true);
+            } else {
+                plateau.setModeTremblement(false);
+            }
+
             //Affichage des deux équipes
             System.out.println("\n\u001b[36m---- Listes des Guerriers novice ----\u001b[0m");
 
@@ -150,13 +160,11 @@ public class Application {
 
             System.out.print("\n\u001b[36m--- Appuyer sur \u001b[0m\u001b[33mentrée \u001b[0m\u001b[36mpour commencer le jeu ---\u001b[0m");
             scanner.nextLine();
-            scanner.skip(".*");
 
 
         }
 
         // --Boucle du jeu--
-        int carreauTremblement;
         String saisieUser;
         boolean bool = true;
         while (!plateau.estPartieTerminee() && bool) {
@@ -174,20 +182,27 @@ public class Application {
             System.out.println("\n\n\u001b[36m----- Plateau (après déplacement)-----\u001b[0m\n");
             PlateauUtilitaire.affichePlateau(plateau.getPlateauCarreau(), chateauBleu, chateauRouge);
 
-            // tremblement de terre #1
-            System.out.println("\u001b[34mTREMBLEMENT DE TERRE pour les Bleus\u001b[0m");
-            carreauTremblement = PlateauUtilitaire.saisirnombre(1, plateau.getPlateauCarreau().size());
-            plateau.lanceTremblement(carreauTremblement-1, chateauRouge);
 
-            // tremblement de terre #2
-            System.out.println("\n\u001b[31mTREMBLEMENT DE TERRE pour les Rouges\u001b[0m");
-            carreauTremblement = PlateauUtilitaire.saisirnombre(1, plateau.getPlateauCarreau().size());
-            plateau.lanceTremblement(carreauTremblement-1, chateauBleu);
+            if (plateau.getModeTremblement()) {
+                int carreauTremblement;
+                // tremblement de terre #1
+                System.out.println("\u001b[34mTREMBLEMENT DE TERRE pour les Bleus\u001b[0m");
+                carreauTremblement = PlateauUtilitaire.saisirnombre(1, plateau.getPlateauCarreau().size());
+                plateau.lanceTremblement(carreauTremblement-1, chateauRouge);
+
+                // tremblement de terre #2
+                System.out.println("\n\u001b[31mTREMBLEMENT DE TERRE pour les Rouges\u001b[0m");
+                carreauTremblement = PlateauUtilitaire.saisirnombre(1, plateau.getPlateauCarreau().size());
+                plateau.lanceTremblement(carreauTremblement-1, chateauBleu);
+
+            }
+
+
 
 
             plateau.incrementeNbTour();
 
-            System.out.println("\nVoulez vous continuez ? (o, n) : ");
+            System.out.print("\nVoulez vous continuez ? (o, n) : ");
             saisieUser = PlateauUtilitaire.saisirMot("o", "n");
 
 
