@@ -1,15 +1,26 @@
 
 // TD 2 => héritage (extend, super, classe abstraite)
 
-        SURCHARGE => @Override
+
+        on change le ou les attributs
+        SURCHARGE => public void setAdresse(String adresse, String adresseParent) {
+                                                 setAdresse(adresse); // méthode de Personne
+                                                 this.adresseParent = adresseParent;
+                                             }
+
+
+
+
+                     on change juste le contenu de la fonction dans une classe fille
+        REDEFINITION =>
+                     @Override
                      public String getMail() {
                         return getPrenom() + "." + getNom() + "@etu.univ-grenoble-alpes.fr";
                      }
 
-        REDEFINITION => public void setAdresse(String adresse, String adresseParent) {
-                            setAdresse(adresse); // méthode de Personne
-                            this.adresseParent = adresseParent;
-                        }
+
+
+        on change les paramètres de la fonction
 
 // td 3 => polymorphisme, collection, comparaison
 
@@ -34,7 +45,9 @@
         (Comparator) utilisé lors de la création du TreeSet.
 
         -> LinkedList utilise une liste chainée pour ranger les données, ce qui la rend rapide pour l'ajout et la suppression
-        d'éléments à n'importe quelle position, mais très lent pour l'accès aux valeurs par indice. PriorityQueue est une autre option à considérer.
+        d'éléments à n'importe quelle position, mais très lent pour l'accès aux valeurs par indice.
+
+        -> PriorityQueue est une autre option à considérer.
 
         _____
         L'interface Comparable en Java permet de définir un ordre naturel pour les objets d'une classe. Si une classe a
