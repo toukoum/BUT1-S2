@@ -53,7 +53,6 @@ public class Plateau implements Serializable {
     public void deplaceGuerrier(){
         // parcours de droite à gauche pour déplacer les bleus
         for (int i = longueur - 1; i >= 0; i--) {
-
             // si le carreau est un champ de bataille, on lance le combat
             if (plateauCarreau.get(i).estChampdeBataille()) {
                 lanceCombatFromPlateau();
