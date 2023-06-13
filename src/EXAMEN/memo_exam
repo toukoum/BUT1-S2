@@ -57,7 +57,11 @@
            public int compareTo(MaClasse unObjet) {
 
 
-        INTERGACE COMPARATOR => tp 3 -> etudiant
+        INTERFACE COMPARATOR => tp 3 -> etudiant -> TestEtudiantTriMoyenne
+
+
+
+
 
 // TD4
 
@@ -68,13 +72,21 @@
 
 // TD5
 
-        Logger => testtabledoperation
+        Logger => tableDOperation => testtabledoperation
+        ou sinon pour l'utilisation trivial => TestLogging
 
 // TD6
 
         Test unitaire => articleTest
+        return intitule.substring(0, 1).toUpperCase() + intitule.substring(1).toLowerCase();
 
 
+
+
+================= Note en plus ===================
+        Pour avoir une entrée de nombre d'un user VERIFIE  => TP2 => contrainteUtilisateur
+
+        Example exception => Examen => memo exam
 
 
 

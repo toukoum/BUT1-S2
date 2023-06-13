@@ -1,22 +1,30 @@
 package TP2.contrainte;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ContrainteUtilitaire {
 
     public static ReelContraint saisir(double min, double max) {
         Scanner lecteur = new Scanner(System.in);
-        double saisie;
+        double saisie =0.0;
         ReelContraint userSaisie;
         userSaisie = new ReelContraint(min, max);
 
         do {
             System.out.print("Veuillez saisir un Réel compris entre " + min + " et " + max + " : ");
-            saisie = lecteur.nextDouble();
-            lecteur.nextLine();
-            if (saisie > max || saisie < min) {
-                System.out.println("Votres réel n'est pas compris dans l'intervalle demandé ! Recommencez.");
+            try {
+                saisie = lecteur.nextDouble();
+                lecteur.nextLine();
+                if (saisie > max || saisie < min) {
+                    System.out.println("Votres réel n'est pas compris dans l'intervalle demandé ! Recommencez.");
+                }
+
+            } catch (InputMismatchException e) {
+                System.out.println("Veuillez saisir un nombre !");
+                lecteur.nextLine();
             }
+
 
         } while (saisie < min || saisie > max);
 

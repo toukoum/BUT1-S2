@@ -16,7 +16,7 @@ public class TestLogging {
 
 
         // Configuration du logger
-        // (Ou alors => EditConfiguration > Modify options > add VM options : -Djava.util.logging.config.file=conf/debug-logging.properties)
+        // (Ou alors => EditConfiguration > Modify options > add VM options : -Djava.util.logging.config.file=conf/debuglogging.properties)
         try {
             logManager.readConfiguration( new FileInputStream("conf/debuglogging.properties") );
         } catch ( IOException exception ) {
@@ -32,7 +32,7 @@ public class TestLogging {
         // et un diviseur random entre 0 et 2 (compris)
 
         int dividende = (int) (Math.random() * 10);
-        int diviseur = (int) (Math.random() * 3);
+        int diviseur = (int) (0);
         int quotient = 0;
 
 

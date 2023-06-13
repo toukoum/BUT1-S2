@@ -18,7 +18,7 @@ public class TestTableDOperation {
         Logger LOGGER = Logger.getLogger(TestTableDOperation.class.getPackageName());
 
         // Configuration du logger
-        // (Ou alors => EditConfiguration > Modify options > add VM options : -Djava.util.logging.config.file=conf/debug-logging.properties)
+        // (Ou alors => EditConfiguration > Modify options > add VM options : -Djava.util.logging.config.file=conf/debuglogging.properties)
         try {
             logManager.readConfiguration( new FileInputStream("conf/debuglogging.properties") );
         } catch ( IOException exception ) {
@@ -46,15 +46,15 @@ public class TestTableDOperation {
         if (choix == 1) {
             OperationEnum addition = OperationEnum.ADDITION;
             tableDOperation = new TableDOperation(addition);
-            LOGGER.log(Level.INFO, "Type d'opération : Addition");
+            LOGGER.log(Level.INFO, "Type d'opération:" + addition.name());
         } else if (choix == 2) {
             OperationEnum soustraction = OperationEnum.SOUSTRACTION;
             tableDOperation = new TableDOperation(soustraction);
-            LOGGER.log(Level.INFO, "Type d'opération : Soustraction");
+            LOGGER.log(Level.INFO, "Type d'opération:" + soustraction.name());
         } else if (choix == 3) {
             OperationEnum multiplication = OperationEnum.MULTIPLICATION;
             tableDOperation = new TableDOperation(multiplication);
-            LOGGER.log(Level.INFO, "Type d'opération : Multiplication");
+            LOGGER.log(Level.INFO, "Type d'opération:" + multiplication.name());
         }
 
 

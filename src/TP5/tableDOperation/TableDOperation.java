@@ -40,7 +40,7 @@ public class TableDOperation {
     public int getNombreReponseJuste() {
         int nombreReponseJuste = 0;
         for (Operation operation : listeOperation) {
-            if (operation.isReponseJuste() && operation.getFirstTry() == true) {
+            if (operation.isReponseJuste() && operation.getFirstTry()) {
                 LOGGER.log(Level.INFO, "Une réponse juste de l'utilisateur");
                 nombreReponseJuste++;
             } else{

@@ -35,7 +35,7 @@ public class Article {
     public double getPrix() {return prix;}
 
 
-    public double getPrix(int quantite) {
+    public double getPrix(double quantite) {
         // retourne le prix unitaire si la quantité demandée est
         //inférieur à 100, retourne le prix unitaire avec une ristourne de 10% si la quantité
         //demandée est supérieur ou égal à 100. Créer une constante SEUIL égale à 100 pour

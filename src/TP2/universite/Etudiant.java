@@ -2,9 +2,9 @@ package TP2.universite;
 
 import TP2.contrainte.ContrainteUtilitaire;
 import TP2.contrainte.Note;
+import TP2.contrainte.ReelContraint;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 
 /**
  * @Class Etudiant
@@ -100,8 +100,8 @@ public class Etudiant extends Personne implements Comparable<Etudiant> {
 
 
     public void addNote() {
-        Note note = ContrainteUtilitaire.saisirNote(0, 20);
-        listeNotes.add(note);
+        ReelContraint note = ContrainteUtilitaire.saisir(0.0, 20.0);
+        listeNotes.add((Note) note);
     }
 
 
